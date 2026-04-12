@@ -133,14 +133,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="hero__scroll-indicator"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-      >
-        <div className="hero__scroll-dot" />
-      </motion.div>
     </section>
   );
 }
