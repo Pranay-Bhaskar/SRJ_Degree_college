@@ -95,7 +95,7 @@ export default function Navbar({ theme, toggleTheme }) {
           {/* Logo */}
           <Link to="/" className="navbar__logo">
             <div className="navbar__logo-icon">
-              <span>SRJ</span>
+              <img src="/SRJ.svg" alt="SRJ College Logo" className="logo-img" />
             </div>
             <div className="navbar__logo-text">
               <span className="navbar__logo-name">Dr. SRJ Degree College</span>
