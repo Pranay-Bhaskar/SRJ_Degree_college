@@ -1,0 +1,192 @@
+/* ─── Placements ────────────────────────────────────────────── */
+.placements__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.placement-stat {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--bg-section);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+[data-theme="dark"] .placement-stat {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.06);  
+}
+.placement-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.placement-stat__icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+.placement-stat__value {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.placement-stat__label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Companies */
+.placements__companies {
+  background: var(--bg-section);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 64px;
+  border: 1px solid var(--border-light);
+}
+[data-theme="dark"] .placements__companies {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.06);
+}
+.placements__companies-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.placements__companies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.placements__company-chip {
+  padding: 8px 18px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: var(--transition);
+  cursor: default;
+}
+[data-theme="dark"] .placements__company-chip {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+}
+.placements__company-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Testimonials */
+.testimonials { }
+.testimonials__heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 36px;
+}
+.testimonials__heading span { color: var(--accent); }
+
+.testimonials__carousel {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--bg-section);
+  border-radius: var(--radius-xl);
+  padding: 40px 40px;
+  border: 1px solid var(--border-light);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+[data-theme="dark"] .testimonial-card {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.06);
+}
+
+.testimonial-card__stars {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+}
+.testimonial-card__text {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.9;
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--grad-hero);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.testimonial-card__name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+.testimonial-card__course {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Dots */
+.testimonials__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.testimonials__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-light);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+.testimonials__dot.active {
+  background: var(--primary);
+  width: 24px;
+  border-radius: var(--radius-full);
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .placements__stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .testimonial-card { padding: 28px 20px; }
+  .testimonials__heading { font-size: 1.3rem; }
+}

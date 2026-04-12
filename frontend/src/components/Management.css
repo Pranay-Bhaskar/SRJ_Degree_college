@@ -1,0 +1,124 @@
+/* ─── Management ────────────────────────────────────────────── */
+.management__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.mgmt-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 48px 36px 36px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+[data-theme="dark"] .mgmt-card {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.06);
+}
+.mgmt-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Avatar */
+.mgmt-card__avatar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 20px;
+}
+.mgmt-card__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--grad-hero);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.mgmt-card__initials {
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.mgmt-card__avatar-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px dashed rgba(244,180,0,0.4);
+  animation: spin-slow 10s linear infinite;
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Info */
+.mgmt-card__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.mgmt-card__role {
+  font-size: 0.78rem;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+/* Message */
+.mgmt-card__message {
+  position: relative;
+  background: rgba(31,42,109,0.04);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  text-align: left;
+  border-left: 3px solid var(--accent);
+}
+[data-theme="dark"] .mgmt-card__message { background: rgba(31,42,109,0.15); }
+.mgmt-card__quote {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: var(--accent);
+  line-height: 0;
+  vertical-align: -1.2rem;
+  margin-right: 6px;
+  opacity: 0.6;
+}
+.mgmt-card__message p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  display: inline;
+}
+
+/* Accent Bar */
+.mgmt-card__accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.mgmt-card:hover .mgmt-card__accent { transform: scaleX(1); }
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .management__grid { grid-template-columns: 1fr; }
+  .mgmt-card { padding: 36px 24px 28px; }
+}

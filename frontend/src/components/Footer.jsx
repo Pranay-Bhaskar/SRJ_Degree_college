@@ -1,0 +1,118 @@
+import { FiFacebook, FiInstagram, FiYoutube, FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import { collegeInfo, courses } from "../data/mockData";
+import "./Footer.css";
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+  const scroll = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  return (
+    <footer className="footer" id="footer">
+      {/* CTA Banner */}
+      <div className="footer__cta-banner">
+        <div className="footer__cta-content">
+          <div>
+            <h3>Ready to Shape Your Future?</h3>
+            <p>Admissions open for 2026–27. Apply before July 30, 2026.</p>
+          </div>
+          <div className="footer__cta-btns">
+            <button className="btn btn-accent" onClick={() => scroll("admissions")}>Apply Now</button>
+            <button className="btn btn-outline" onClick={() => scroll("contact")}>Contact Us</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
+      <div className="footer__main">
+        <div className="container footer__grid">
+          {/* Brand */}
+          <div className="footer__brand">
+            <div className="footer__logo">
+              <div className="footer__logo-icon">SRJ</div>
+              <span>Dr. SRJ Degree College</span>
+            </div>
+            <p className="footer__tagline">{collegeInfo.tagline}</p>
+            <div className="footer__contact-mini">
+              <a href={`tel:${collegeInfo.phone[0]}`} className="footer__contact-item">
+                <FiPhone size={13} />{collegeInfo.phone[0]}
+              </a>
+              <a href={`mailto:${collegeInfo.email}`} className="footer__contact-item">
+                <FiMail size={13} />{collegeInfo.email}
+              </a>
+              <span className="footer__contact-item">
+                <FiMapPin size={13} />Atmakur, Nellore, AP 524322
+              </span>
+            </div>
+            <div className="footer__socials">
+              <a href={collegeInfo.socialLinks.facebook} target="_blank" rel="noreferrer" className="footer__social" aria-label="Facebook"><FiFacebook /></a>
+              <a href={collegeInfo.socialLinks.instagram} target="_blank" rel="noreferrer" className="footer__social" aria-label="Instagram"><FiInstagram /></a>
+              <a href={collegeInfo.socialLinks.youtube} target="_blank" rel="noreferrer" className="footer__social" aria-label="YouTube"><FiYoutube /></a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="footer__col">
+            <h4 className="footer__col-title">Quick Links</h4>
+            <ul className="footer__links">
+              {[
+                { label: "Home", id: "home" },
+                { label: "About Us", id: "about" },
+                { label: "Courses", id: "courses" },
+                { label: "Admissions", id: "admissions" },
+                { label: "Facilities", id: "facilities" },
+                { label: "Gallery", id: "gallery" },
+                { label: "Contact", id: "contact" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <button className="footer__link" onClick={() => scroll(l.id)}>
+                    → {l.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Courses */}
+          <div className="footer__col">
+            <h4 className="footer__col-title">Our Courses</h4>
+            <ul className="footer__links">
+              {courses.map((c) => (
+                <li key={c.id}>
+                  <button className="footer__link" onClick={() => scroll("courses")}>
+                    → {c.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Info */}
+          <div className="footer__col">
+            <h4 className="footer__col-title">Affiliation</h4>
+            <p className="footer__col-text">
+              Affiliated to{" "}
+              <a href="https://vsu.ac.in" target="_blank" rel="noreferrer" className="footer__link-inline">
+                Vikrama Simhapuri University
+              </a>
+            </p>
+            <p className="footer__col-text" style={{ marginTop: "10px" }}>
+              Government-aided institution committed to quality rural education since {collegeInfo.established}.
+            </p>
+            <div className="footer__affiliation-badge">
+              <span>🏛️ VSU Affiliated</span>
+              <span>🇮🇳 Govt. Aided</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="footer__bottom">
+        <div className="footer__bottom-inner">
+          <span>© {year} Dr. SRJ Degree College, Atmakur. All rights reserved.</span>
+          <span>Designed with ❤️ for rural education</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -1,0 +1,204 @@
+/* ─── About Section ─────────────────────────────────────────── */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* Image / Visual Panel */
+.about__image-wrap {
+  position: relative;
+  margin-bottom: 28px;
+}
+.about__image-main {
+  width: 100%;
+  height: 360px;
+  background: var(--grad-hero);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+.about__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+}
+.about__college-emblem {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  animation: float 3s ease-in-out infinite;
+}
+.about__image-placeholder p {
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.about__image-placeholder small {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+}
+
+/* Floating Cards */
+.about__stats-float {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  padding: 16px 22px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+[data-theme="dark"] .about__stats-float {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.1);
+}
+.about__float-num {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+.about__float-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.about__badge-float {
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  background: var(--grad-accent);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Highlight Chips */
+.about__highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.about__highlight-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg-section);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+[data-theme="dark"] .about__highlight-chip { background: var(--bg-card); }
+.about__highlight-chip:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.about__highlight-icon {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+.about__highlight-val {
+  display: block;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+.about__highlight-lbl {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Content side */
+.about__content { padding-left: 16px; }
+.about__body {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin: 20px 0 28px;
+}
+
+/* Pillars */
+.about__pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.about__pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+.about__pillar-icon {
+  color: var(--accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Vision & Mission */
+.about__vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.about__vm-card {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+}
+.about__vm-card--vision {
+  background: rgba(31,42,109,0.05);
+  border-color: var(--primary);
+}
+.about__vm-card--mission {
+  background: rgba(244,180,0,0.07);
+  border-color: var(--accent);
+}
+[data-theme="dark"] .about__vm-card--vision { background: rgba(31,42,109,0.2); }
+[data-theme="dark"] .about__vm-card--mission { background: rgba(244,180,0,0.1); }
+.about__vm-card h4 {
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.about__vm-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about__grid { grid-template-columns: 1fr; gap: 48px; }
+  .about__content { padding-left: 0; }
+}
+@media (max-width: 480px) {
+  .about__vm-grid { grid-template-columns: 1fr; }
+  .about__highlights { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,88 @@
+/* ─── Facilities ────────────────────────────────────────────── */
+.facilities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.facility-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+[data-theme="dark"] .facility-card {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.06);
+}
+.facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(31,42,109,0.2);
+}
+.facility-card:hover .facility-card__hover-line { height: 100%; }
+
+.facility-card__hover-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--grad-hero);
+  transition: height 0.4s ease;
+  border-radius: 0 0 2px 2px;
+}
+
+.facility-card__icon-wrap {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(31,42,109,0.08), rgba(58,79,207,0.12));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+  border: 1px solid rgba(31,42,109,0.1);
+}
+.facility-card:hover .facility-card__icon-wrap {
+  background: var(--grad-hero);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.facility-card__content { flex: 1; min-width: 0; }
+.facility-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.facility-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.facility-card__desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .facilities__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .facilities__grid { grid-template-columns: 1fr; }
+  .facility-card { padding: 22px 18px; }
+}
