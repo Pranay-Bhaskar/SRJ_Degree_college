@@ -292,7 +292,7 @@ export default function Navbar({ theme, toggleTheme }) {
           <img src="/SRJ.svg" alt="SRJ College Logo" className="college-logo" />
           <div className="college-text">
             <h1 className="college-name">Dr. SRJ Degree College</h1>
-           {/* <p className="college-tagline">Empowering Rural Youth Through Quality Education</p> */}
+            <p className="college-tagline">Empowering Rural Youth Through Quality Education</p> 
             <p className="college-accreditation">
               Affiliated to Vikrama Simhapuri University · Atmakur, Nellore, Andhra Pradesh
             </p>
