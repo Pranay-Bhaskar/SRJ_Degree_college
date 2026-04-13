@@ -1,4 +1,4 @@
-/* ─── Topbar ────────────────────────────────────────────────── */
+/* ─── Topbar ────────────────────────────────────────────────── *
 .topbar {
   background: var(--primary-dark);
   color: rgba(255,255,255,0.75);
@@ -32,7 +32,7 @@
 .topbar__affiliation a { color: var(--accent-light); font-weight: 500; }
 .topbar__affiliation a:hover { text-decoration: underline; }
 
-/* ─── Navbar ────────────────────────────────────────────────── */
+/* ─── Navbar ────────────────────────────────────────────────── *
 .navbar {
   position: sticky;
   top: 0;
@@ -64,7 +64,7 @@
   gap: 16px;
 }
 
-/* Logo */
+/* Logo *
 .navbar__logo {
   display: flex;
   align-items: center;
@@ -72,8 +72,8 @@
   flex-shrink: 0;
 }
 .navbar__logo-icon {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   background: var(--grad-hero);
   border-radius: var(--radius-md);
   display: flex;
@@ -102,7 +102,7 @@
   line-height: 1.3;
 }
 
-/* Desktop Nav Links */
+/* Desktop Nav Links *
 .navbar__links {
   display: flex;
   align-items: center;
@@ -136,7 +136,7 @@
 }
 .navbar__chevron.open { transform: rotate(180deg); }
 
-/* Dropdown */
+/* Dropdown *
 .navbar__dropdown {
   position: absolute;
   top: calc(100% + 8px);
@@ -168,7 +168,7 @@
   padding-left: 24px;
 }
 
-/* Actions */
+/* Actions *
 .navbar__actions {
   display: flex;
   align-items: center;
@@ -191,7 +191,7 @@
   background: rgba(31,42,109,0.15);
 }
 
-/* Hamburger */
+/* Hamburger *
 .navbar__hamburger {
   display: none;
   color: var(--primary);
@@ -202,7 +202,7 @@
 }
 .navbar__hamburger:hover { background: rgba(31,42,109,0.08); }
 
-/* Mobile Menu */
+/* Mobile Menu *
 .navbar__mobile {
   background: var(--white);
   border-top: 1px solid var(--border-light);
@@ -229,7 +229,7 @@
 }
 .navbar__mobile-ctas .btn { flex: 1; justify-content: center; }
 
-/* ─── Responsive ────────────────────────────────────────────── */
+/* ─── Responsive ────────────────────────────────────────────── *
 @media (max-width: 1100px) {
   .navbar__links { gap: 0; }
   .navbar__link { padding: 6px 8px; font-size: 0.8rem; }
@@ -241,4 +241,209 @@
 @media (max-width: 480px) {
   .topbar { display: none; }
   .navbar__logo-tagline { display: none; }
+}
+*/
+
+
+
+
+
+
+
+/* ─── Brand Section ─────────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.navbar--scrolled {
+  box-shadow: 0 4px 24px rgba(31,42,109,0.12);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 21, 37, 0.98);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+[data-theme="dark"] .navbar--scrolled {
+  background: rgba(15, 21, 37, 0.99);
+}
+
+/* ─── Brand Section ─────────────────────────────────────────── */
+.navbar__brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px var(--section-pad-x);
+  flex-wrap: wrap;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.navbar__logo-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.college-logo {
+  height: 100px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.college-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.college-name {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.college-tagline {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.college-accreditation {
+  font-size: 0.9rem;
+  color: #5a6a85;
+  line-height: 1.3;
+}
+
+.navbar__badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge {
+  height: 60px;
+  width: auto;
+}
+
+/* ─── Navigation Section ───────────────────────────────────── */
+.navbar__nav {
+  background: var(--primary-dark);
+  padding: 4px var(--section-pad-x);
+}
+
+.navbar__links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.navbar__link-wrap {
+  position: relative; /* important for dropdown positioning */
+}
+
+.navbar__link {
+  color: #fff;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.navbar__link:hover {
+  color: var(--accent);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Dropdown */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 6px); /* directly below the link */
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 220px;
+  z-index: 1000;
+}
+
+[data-theme="dark"] .navbar__dropdown {
+  background: var(--bg-card);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.navbar__dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: var(--transition);
+}
+
+.navbar__dropdown-item:hover {
+  background: rgba(31,42,109,0.06);
+  color: var(--primary);
+}
+
+/* ─── Mobile Menu ──────────────────────────────────────────── */
+.navbar__hamburger {
+  display: none;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.navbar__hamburger:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.navbar__mobile {
+  background: #fff;
+  border-top: 1px solid var(--border-light);
+  overflow: hidden;
+  padding: 12px var(--section-pad-x) 20px;
+}
+
+[data-theme="dark"] .navbar__mobile {
+  background: var(--bg-card);
+}
+
+.navbar__mobile-link {
+  display: block;
+  padding: 11px 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.navbar__mobile-link:hover {
+  color: var(--primary);
+  padding-left: 10px;
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .navbar__links { display: none; }
+  .navbar__hamburger { display: flex; }
+  .navbar__badges { display: none; }
+}
+
+@media (max-width: 480px) {
+  .college-tagline,
+  .college-accreditation { display: none; }
 }

@@ -1,3 +1,4 @@
+{/* 
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,8 +62,8 @@ export default function Navbar({ theme, toggleTheme }) {
 
   return (
     <>
-      {/* Top Info Bar */}
-      <div className="topbar">
+      {/* Top Info Bar 
+       <div className="topbar">
         <div className="topbar__inner">
           <div className="topbar__contact">
             <a href={`tel:${collegeInfo.phone[0]}`} className="topbar__item">
@@ -84,7 +85,7 @@ export default function Navbar({ theme, toggleTheme }) {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Main Navbar 
       <motion.header
         className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}
         initial={{ y: -80 }}
@@ -92,7 +93,7 @@ export default function Navbar({ theme, toggleTheme }) {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="navbar__inner">
-          {/* Logo */}
+          {/* Logo *
           <Link to="/" className="navbar__logo">
             <div className="navbar__logo-icon">
               <img src="/SRJ.svg" alt="SRJ College Logo" className="logo-img" />
@@ -103,7 +104,7 @@ export default function Navbar({ theme, toggleTheme }) {
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav Links *
           <nav className="navbar__links" ref={dropdownRef}>
             {navLinks.map((link) => (
               <div
@@ -148,7 +149,7 @@ export default function Navbar({ theme, toggleTheme }) {
             ))}
           </nav>
 
-          {/* CTA Buttons + Theme Toggle */}
+          {/* CTA Buttons + Theme Toggle *
           <div className="navbar__actions">
             <button className="navbar__theme-btn" onClick={toggleTheme} title="Toggle Dark Mode">
               {theme === "dark" ? <FiSun /> : <FiMoon />}
@@ -169,13 +170,13 @@ export default function Navbar({ theme, toggleTheme }) {
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger *
           <button className="navbar__hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu *
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -204,5 +205,182 @@ export default function Navbar({ theme, toggleTheme }) {
         </AnimatePresence>
       </motion.header>
     </>
+  );
+}
+*/}
+
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiMenu, FiX, FiChevronDown, FiSun, FiMoon } from "react-icons/fi";
+import { collegeInfo } from "../data/mockData";
+import "./Navbar.css";
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
+  {
+    label: "Courses",
+    href: "/#courses",
+    dropdown: [
+      { label: "BA Telugu (Aided)", href: "/#courses" },
+      { label: "B.Sc Dairy Science", href: "/#courses" },
+      { label: "B.Sc Food Science & Technology", href: "/#courses" },
+      { label: "BCA", href: "/#courses" },
+      { label: "B.Com", href: "/#courses" },
+    ],
+  },
+  { label: "Admissions", href: "/#admissions" },
+  { label: "Facilities", href: "/#facilities" },
+  { label: "Faculty", href: "/#management" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Placements", href: "/#placements" },
+  { label: "Contact", href: "/#contact" },
+];
+
+export default function Navbar({ theme, toggleTheme }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSmoothScroll = (e, href) => {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMobileOpen(false);
+    }
+  };
+
+  return (
+    <motion.header
+      className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      {/* Brand Section */}
+      <div className="navbar__brand">
+        <div className="navbar__logo-block">
+          <img src="/SRJ.svg" alt="SRJ College Logo" className="college-logo" />
+          <div className="college-text">
+            <h1 className="college-name">Dr. SRJ Degree College</h1>
+            <p className="college-tagline">Empowering Rural Youth Through Quality Education</p>
+            <p className="college-accreditation">
+              Affiliated to Vikrama Simhapuri University · Atmakur, Nellore, Andhra Pradesh
+            </p>
+          </div>
+        </div>
+        <div className="navbar__badges">
+          <img src="/vsu_logo.png" alt="Affiliated" className="badge" />
+          <img src="/AICTE.svg.png" alt="AICTE Badge" className="badge" />
+          <img src="/APSCHE.svg" alt="APSCHE Badge" className="badge" />
+        </div>
+      </div>
+
+      {/* Navigation Section */}
+      <div className="navbar__nav">
+        <nav className="navbar__links" ref={dropdownRef}>
+          {navLinks.map((link) => (
+            <div
+              key={link.label}
+              className="navbar__link-wrap"
+              onMouseEnter={() => link.dropdown && setActiveDropdown(link.label)}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <a
+                href={link.href}
+                className="navbar__link"
+                onClick={(e) => handleSmoothScroll(e, link.href)}
+              >
+                {link.label}
+                {link.dropdown && (
+                  <FiChevronDown
+                    className={`navbar__chevron ${activeDropdown === link.label ? "open" : ""}`}
+                  />
+                )}
+              </a>
+              {link.dropdown && (
+                <AnimatePresence>
+                  {activeDropdown === link.label && (
+                    <motion.div
+                      className="navbar__dropdown"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      {link.dropdown.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          className="navbar__dropdown-item"
+                          onClick={(e) => handleSmoothScroll(e, item.href)}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        {/* Theme Toggle Only */}
+        <div className="navbar__actions">
+          <button
+            className="navbar__theme-btn"
+            onClick={toggleTheme}
+            title="Toggle Dark Mode"
+          >
+            {theme === "dark" ? <FiSun /> : <FiMoon />}
+          </button>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="navbar__hamburger"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="navbar__mobile">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="navbar__mobile-link"
+              onClick={(e) => handleSmoothScroll(e, link.href)}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </motion.header>
   );
 }
