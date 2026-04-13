@@ -8,9 +8,9 @@ const fadeUp = (delay = 0) => ({
 });
 
 const stats = [
-  { value: "2005", label: "Established" },
+  { value: "1983", label: "Established" },
   { value: "5+",   label: "Courses Offered" },
-  { value: "20+",  label: "Years of Excellence" },
+  { value: "40+",  label: "Years of Excellence" },
   { value: "2000+",label: "Alumni Strong" },
 ];
 
