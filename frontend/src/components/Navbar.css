@@ -343,7 +343,7 @@
 /* ─── Navigation Section ───────────────────────────────────── */
 .navbar__nav {
   background: var(--primary-dark);
-  padding: 4px var(--section-pad-x);
+  padding: 12px var(--section-pad-x);
 }
 
 .navbar__links {
