@@ -230,6 +230,15 @@ const navLinks = [
       { label: "B.Com", href: "/#courses" },
     ],
   },
+  {
+    label: "Examinations",
+    href: "/#examinations",
+    dropdown: [
+      { label: "Notifications", href: "/#notifications" },
+      { label: "Orders & Circulars", href: "/#orders" },
+      { label: "Downloads", href: "/#downloads" },
+    ],
+  },
   { label: "Admissions", href: "/#admissions" },
   { label: "Facilities", href: "/#facilities" },
   { label: "Faculty", href: "/#management" },
