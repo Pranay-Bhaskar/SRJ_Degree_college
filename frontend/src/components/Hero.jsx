@@ -102,7 +102,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right / Stats Card */}
+        {/* Right / Stats Card
         <motion.div
           className="hero__stats-card glass-card"
           initial={{ opacity: 0, x: 60 }}
@@ -130,7 +130,7 @@ export default function Hero() {
           <p className="hero__stats-note">
             🏛️ Proudly Affiliated to VSU · Government Aided Programs
           </p>
-        </motion.div>
+        </motion.div> */}
       </div>
 
     </section>
