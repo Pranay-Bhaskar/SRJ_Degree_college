@@ -6,7 +6,7 @@ import { collegeInfo } from "../data/mockData";
 import "./About.css";
 
 const highlights = [
-  { icon: <FiCalendar />, label: "Established", value: collegeInfo.established },
+  { icon: <FiCalendar />, label: "Established", value: 1983 },
   { icon: <FiAward />,    label: "Affiliated To", value: "VSU" },
   { icon: <FiMapPin />,   label: "Location", value: "Atmakur, Nellore" },
   { icon: <FiCheckCircle />, label: "Programs", value: "5 Courses" },
@@ -14,7 +14,7 @@ const highlights = [
 
 const pillars = [
   "Government-aided programs with recognized degrees",
-  "20+ years of academic excellence in Nellore",
+  "40+ years of academic excellence in Nellore",
   "Experienced faculty with research background",
   "Strong rural outreach & scholarship support",
 ];
@@ -44,7 +44,7 @@ export default function About() {
               </div>
               <div className="about__stats-float glass-card">
                 <div className="about__float-stat">
-                  <span className="about__float-num">20+</span>
+                  <span className="about__float-num">40+</span>
                   <span className="about__float-label">Years of Excellence</span>
                 </div>
               </div>
