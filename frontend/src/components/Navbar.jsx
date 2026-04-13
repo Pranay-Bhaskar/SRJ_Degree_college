@@ -247,7 +247,7 @@ const navLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -355,7 +355,7 @@ export default function Navbar({ theme, toggleTheme }) {
           ))}
         </nav>
 
-        {/* Theme Toggle Only */}
+        {/* Theme Toggle Only 
         <div className="navbar__actions">
           <button
             className="navbar__theme-btn"
@@ -364,7 +364,7 @@ export default function Navbar({ theme, toggleTheme }) {
           >
             {theme === "dark" ? <FiSun /> : <FiMoon />}
           </button>
-        </div>
+        </div>*/}
 
         {/* Mobile Hamburger */}
         <button
