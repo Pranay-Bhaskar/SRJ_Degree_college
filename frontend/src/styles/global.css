@@ -7,7 +7,7 @@
 
 /* ─── CSS Variables (Design Tokens) ───────────────────────── */
 :root {
-  /* Brand Colors */
+  /* Brand Colors 
   --primary:       #1F2A6D;
   --primary-dark:  #141c4d;
   --primary-light: #3A4FCF;
@@ -15,6 +15,14 @@
   --accent-light:  #FFD95A;
   --urgent:        #B22222;
   --urgent-light:  #E63946;
+*/
+  --primary:       #000000;  /* Pure Black */
+  --primary-dark:  #1F2A6D;  /* Very Dark Gray */
+  --primary-light: #000000;  /* Dark Gray */
+  --accent:        #000000;  /* Medium Gray */
+  --accent-light:  #000000;  /* Light Gray */
+  --urgent:        #000000;  /* Soft Gray */
+  --urgent-light:  #000000;  /* Very Light Gray */
 
   /* Neutral Colors */
   --white:         #FFFFFF;
