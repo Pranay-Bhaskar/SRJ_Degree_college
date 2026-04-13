@@ -7,11 +7,22 @@
   overflow: hidden;
 }
 
-/* Background — deep gradient as fallback / atmosphere layer */
+/* Background — deep gradient as fallback / atmosphere layer 
 .hero__bg {
   position: absolute;
   inset: 0;
   background: var(--grad-hero);
+  z-index: 0;
+}
+*/
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-hero); /* keep gradient as fallback */
+  background-image: url("/hero.png"); /* your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 }
 
@@ -30,9 +41,9 @@
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(31,42,109,0.85) 0%,
-    rgba(20,28,77,0.7) 50%,
-    rgba(31,42,109,0.9) 100%
+    rgba(31,42,109,0.55) 0%,
+    rgba(20,28,77,0.4) 50%,
+    rgba(31,42,109,0.6) 100%
   );
   z-index: 2;
 }
