@@ -312,19 +312,20 @@
 .college-name {
   font-family: var(--font-primary);
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   color: var(--primary);
   line-height: 1.2;
 }
 
 .college-tagline {
-  font-size: 1rem;
+  display: none;
+  /* font-size: 1rem;
   color: var(--text-muted);
-  line-height: 1.3;
+  line-height: 1.3; */
 }
 
 .college-accreditation {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #5a6a85;
   line-height: 1.3;
 }
@@ -455,4 +456,46 @@
 @media (max-width: 480px) {
   .college-tagline,
   .college-accreditation { display: none; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Brand section */
+  .navbar__brand {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .college-logo {
+    height: 70px; /* smaller logo */
+  }
+
+  .college-name {
+    font-size: 1.6rem; /* reduce heading size */
+  }
+
+  .college-accreditation {
+    font-size: 0.85rem;
+  }
+
+  .navbar__badges {
+    display: none; /* hide badges on small screens */
+  }
+
+  /* Secondary nav links */
+  .navbar__links {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .navbar__link {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 1rem;
+  }
 }
