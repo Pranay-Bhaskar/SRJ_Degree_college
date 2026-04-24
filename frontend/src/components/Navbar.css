@@ -250,7 +250,7 @@
 
 
 
-/* ─── Brand Section ─────────────────────────────────────────── */
+/* ─── Brand Section ─────────────────────────────────────────── *
 .navbar {
   position: sticky;
   top: 0;
@@ -272,7 +272,7 @@
   background: rgba(15, 21, 37, 0.99);
 }
 
-/* ─── Brand Section ─────────────────────────────────────────── */
+/* ─── Brand Section ─────────────────────────────────────────── *
 .navbar__brand {
   display: flex;
   justify-content: space-between;
@@ -318,7 +318,7 @@
 }
 
 .college-tagline {
-   /*display: none;*/
+   /*display: none;*
   font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.3; 
@@ -340,8 +340,7 @@
   width: auto;
 }
 
-/* ─── Navigation Section ───────────────────────────────────── */
-.navbar__nav {
+/* ─── Navigation Section ───────────────────────────────────── *
   background: var(--primary-dark);
   padding: 12px var(--section-pad-x);
 }
@@ -355,7 +354,7 @@
 }
 
 .navbar__link-wrap {
-  position: relative; /* important for dropdown positioning */
+  position: relative; /* important for dropdown positioning *
 }
 
 .navbar__link {
@@ -374,16 +373,22 @@
   background: rgba(255,255,255,0.1);
 }
 
-/* Dropdown */
+/* Dropdown *
 .navbar__dropdown {
   position: absolute;
-  top: calc(100% + 6px); /* directly below the link */
+  top: calc(100% + 6px); /* directly below the link *
   left: 0;
+  /* NEW *
+  min-width: 240px;
+
   background: #fff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   min-width: 220px;
+
+  padding: 10px 0;
+
   z-index: 1000;
 }
 
@@ -406,7 +411,7 @@
   color: var(--primary);
 }
 
-/* ─── Mobile Menu ──────────────────────────────────────────── */
+/* ─── Mobile Menu ─────────────
 .navbar__hamburger {
   display: none;
   color: #fff;
@@ -446,7 +451,7 @@
   padding-left: 10px;
 }
 
-/* ─── Responsive ───────────────────────────────────────────── */
+/* ─── Responsive ──────────────────────
 @media (max-width: 900px) {
   .navbar__links { display: none; }
   .navbar__hamburger { display: flex; }
@@ -458,9 +463,9 @@
   .college-accreditation { display: none; }
 }
 
-/* Mobile adjustments */
+/* Mobile adjustments *
 @media (max-width: 768px) {
-  /* Brand section */
+  /* Brand section *
   .navbar__brand {
     flex-direction: column;
     align-items: center;
@@ -469,11 +474,11 @@
   }
 
   .college-logo {
-    height: 70px; /* smaller logo */
+    height: 70px; /* smaller logo *
   }
 
   .college-name {
-    font-size: 1.6rem; /* reduce heading size */
+    font-size: 1.6rem; /* reduce heading size *
   }
 
   .college-accreditation {
@@ -481,10 +486,10 @@
   }
 
   .navbar__badges {
-    display: none; /* hide badges on small screens */
+    display: none; /* hide badges on small screens *
   }
 
-  /* Secondary nav links */
+  /* Secondary nav links *
   .navbar__links {
     flex-direction: column;
     gap: 0;
@@ -497,5 +502,364 @@
     padding: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.15);
     font-size: 1rem;
+  }
+}
+*/
+
+
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.navbar--scrolled {
+  box-shadow: 0 4px 24px rgba(31, 42, 109, 0.12);
+}
+
+/* Brand Section */
+.navbar__brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px var(--section-pad-x);
+  flex-wrap: wrap;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.navbar__logo-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.college-logo {
+  height: 100px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.college-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.college-name {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.college-tagline {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.college-accreditation {
+  font-size: 1rem;
+  color: #5a6a85;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.navbar__badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge {
+  height: 70px;
+  width: auto;
+}
+
+/* Navigation Section */
+.navbar__nav {
+  background: var(--primary-dark);
+  padding: 5px var(--section-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.navbar__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  flex: 1;
+}
+
+.navbar__link-wrap {
+  position: relative;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 6px 10px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__link:hover,
+.navbar__link:focus,
+.navbar__link:active,
+.navbar__link.active {
+  color: #a7a5a1;
+  /*color: var(--accent);*/
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar__link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar__chevron {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+  font-size: 0.8rem;
+  position: relative;
+  top: -1px;
+  transition: transform 0.2s ease;
+}
+
+.navbar__chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Desktop Dropdown */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 10px 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.navbar__dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__dropdown-item:hover,
+.navbar__dropdown-item:focus,
+.navbar__dropdown-item:active,
+.navbar__dropdown-item.active {
+  background: rgba(31, 42, 109, 0.06);
+  color: var(--primary);
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar__dropdown-item:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.3rem;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__hamburger:hover,
+.navbar__hamburger:focus,
+.navbar__hamburger:active {
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar__hamburger:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Mobile Menu */
+.navbar__mobile {
+  background: #ffffff;
+  border-top: 1px solid var(--border-light);
+  overflow: hidden;
+  padding: 12px var(--section-pad-x) 20px;
+}
+
+.navbar__mobile-item {
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.navbar__mobile-link {
+  display: block;
+  padding: 11px 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link:focus,
+.navbar__mobile-link:active,
+.navbar__mobile-link.active {
+  color: var(--primary);
+  background: transparent;
+  padding-left: 10px;
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar__mobile-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar__mobile-dropdown {
+  padding-left: 14px;
+  padding-bottom: 8px;
+}
+
+.navbar__mobile-sublink {
+  display: block;
+  padding: 8px 4px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__mobile-sublink:hover,
+.navbar__mobile-sublink:focus,
+.navbar__mobile-sublink:active,
+.navbar__mobile-sublink.active {
+  color: var(--primary);
+  background: transparent;
+  padding-left: 8px;
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar__mobile-sublink:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__badges {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__brand {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .college-logo {
+    height: 70px;
+  }
+
+  .college-name {
+    font-size: 1.6rem;
+  }
+
+  .college-accreditation {
+    font-size: 0.85rem;
+  }
+
+  .navbar__badges {
+    display: none;
+  }
+
+  .navbar__nav {
+    padding: 10px var(--section-pad-x);
+  }
+}
+
+@media (max-width: 480px) {
+  .college-tagline,
+  .college-accreditation {
+    display: none;
+  }
+
+  .college-name {
+    font-size: 1.3rem;
+  }
+
+  .college-logo {
+    height: 58px;
   }
 }
