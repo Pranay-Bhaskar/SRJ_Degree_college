@@ -643,7 +643,7 @@ export default function Navbar() {
     >
       <div className="navbar__brand">
         <Link to="/" className="navbar__logo-block" onClick={closeMenus}>
-          <img src="/SRJ.svg" alt="SRJ College Logo" className="college-logo" />
+          <img src="/SRJ.png" alt="SRJ College Logo" className="college-logo" />
 
           <div className="college-text">
             <h1 className="college-name">Dr. S R J Degree College</h1>
