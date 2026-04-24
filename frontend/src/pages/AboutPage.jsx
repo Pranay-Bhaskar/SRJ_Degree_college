@@ -78,7 +78,7 @@ export default function AboutPage() {
 
           <div className="about-section__media">
             <img
-              src="/images/college-building.jpg"
+              src="/images/college.jpg"
               alt="Dr. SRJ Degree College campus"
             />
           </div>
