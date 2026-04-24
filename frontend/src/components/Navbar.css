@@ -508,6 +508,11 @@
 
 
 
+:root {
+  --navbar-height: 132px;
+  --navbar-height-mobile: 108px;
+}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -629,7 +634,6 @@
 .navbar__link:active,
 .navbar__link.active {
   color: #a7a5a1;
-  /*color: var(--accent);*/
   background: transparent;
   box-shadow: none;
   outline: none;

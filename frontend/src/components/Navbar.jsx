@@ -411,7 +411,16 @@ import "./Navbar.css";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
+  {
+    label: "About Us",
+    path: "/about",
+    dropdown: [
+      { label: "About Us", path: "/about#about-college" },
+      { label: "Principal's Message", path: "/about#principal-message" },
+      { label: "Director's Message", path: "/about#director-message" },
+      { label: "Vision and Mission", path: "/about#vision-mission" },
+    ],
+  },
   {
     label: "Courses",
     path: "/courses",
@@ -424,18 +433,9 @@ const navLinks = [
       { label: "B.Com", path: "/courses#bcom" },
     ],
   },
-  {
-    label: "Examinations",
-    path: "/#examinations",
-    dropdown: [
-      { label: "Notifications", path: "/#notifications" },
-      { label: "Orders & Circulars", path: "/#orders" },
-      { label: "Downloads", path: "/#downloads" },
-    ],
-  },
   { label: "Admissions", path: "/admissions" },
-  { label: "Facilities", path: "/#facilities" },
   { label: "Management", path: "/management" },
+  { label: "Facilities", path: "/#facilities" },
   { label: "Gallery", path: "/#gallery" },
   { label: "Placements", path: "/#placements" },
   { label: "Contact", path: "/#contact" },
@@ -469,13 +469,9 @@ export default function Navbar() {
 
   const scrollToSection = (sectionId) => {
     if (!sectionId) return;
-
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 

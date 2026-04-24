@@ -104,6 +104,7 @@
 }
 
 .message-block__image img {
+  width: 100%;
   height: 380px;
 }
 
@@ -133,6 +134,15 @@
   padding-top: 18px;
 }
 
+/* Anchor scroll fix for sticky navbar */
+#about-college,
+#principal-message,
+#director-message,
+#vision-mission {
+  scroll-margin-top: 16px;
+}
+
+/* Tablet */
 @media (max-width: 992px) {
   .about-section__split,
   .message-block,
@@ -158,6 +168,7 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 576px) {
   .about-hero {
     padding: 56px 0 48px;
@@ -177,5 +188,12 @@
 
   .about-section {
     padding: 56px 0;
+  }
+
+  #about-college,
+  #principal-message,
+  #director-message,
+  #vision-mission {
+    scroll-margin-top: 0px;
   }
 }
