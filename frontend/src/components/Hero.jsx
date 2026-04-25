@@ -222,7 +222,7 @@ export default function Hero() {
           <div className="hero__image-frame">
             <div className="image-inner">
               <img
-                src="/assets/hero.png"
+                src="/public/hero.png"
                 alt="SRJ Degree College Building"
                 className={`building-img${imageLoaded ? " loaded" : ""}`}
                 onLoad={() => setImageLoaded(true)}
