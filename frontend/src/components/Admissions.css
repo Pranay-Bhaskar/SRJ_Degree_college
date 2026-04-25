@@ -1,6 +1,6 @@
 /* ─── Admissions ────────────────────────────────────────────── */
 
-/* Timeline *
+/* Timeline */
 .admissions__timeline {
   max-width: 700px;
   margin: 0 auto 64px;
@@ -76,7 +76,7 @@
   line-height: 1.75;
 }
 
-/* Bottom Grid *
+/* Bottom Grid */
 .admissions__bottom {
   display: grid;
   grid-template-columns: 1fr 1fr 280px;
@@ -107,7 +107,7 @@
 }
 [data-theme="dark"] .admissions__card-title { border-bottom-color: rgba(255,255,255,0.07); }
 
-/* Dates *
+/* Dates */
 .admissions__dates { display: flex; flex-direction: column; gap: 14px; }
 .admissions__date-item {
   display: flex;
@@ -126,7 +126,7 @@
   white-space: nowrap;
 }
 
-/* Documents *
+/* Documents */
 .admissions__docs { display: flex; flex-direction: column; gap: 10px; }
 .admissions__doc-item {
   display: flex;
@@ -144,7 +144,7 @@
   margin-top: 1px;
 }
 
-/* CTA Card *
+/* CTA Card */
 .admissions__cta-card {
   background: var(--grad-hero);
   border-radius: var(--radius-lg);
@@ -165,7 +165,7 @@
   line-height: 1.7;
 }
 
-/* ─── Responsive ────────────────────────────────────────────── *
+/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .admissions__bottom { grid-template-columns: 1fr 1fr; }
   .admissions__cta-card { grid-column: span 2; }

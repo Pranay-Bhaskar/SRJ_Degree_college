@@ -1,4 +1,4 @@
-/* ─── Courses Section ───────────────────────────────────────── *
+/* ─── Courses Section ───────────────────────────────────────── */
 .courses__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -40,7 +40,7 @@
   transform: scaleX(1);
 }
 
-/* Top Panel *
+/* Top Panel */
 .course-card__top {
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
 }
 
-/* Body *
+/* Body */
 .course-card__body {
   padding: 0 22px 16px;
   flex: 1;
@@ -72,7 +72,7 @@
   margin-bottom: 14px;
 }
 
-/* Meta *
+/* Meta */
 .course-card__meta {
   display: flex;
   gap: 16px;
@@ -88,7 +88,7 @@
 }
 .course-card__meta-item svg { color: var(--primary-light); }
 
-/* Eligibility *
+/* Eligibility */
 .course-card__eligibility {
   background: var(--bg-section);
   border-radius: var(--radius-sm);
@@ -110,7 +110,7 @@
   font-weight: 500;
 }
 
-/* Highlights *
+/* Highlights */
 .course-card__highlights {
   display: flex;
   flex-direction: column;
@@ -131,7 +131,7 @@
   flex-shrink: 0;
 }
 
-/* Footer *
+/* Footer */
 .course-card__footer {
   display: flex;
   gap: 10px;
@@ -141,7 +141,7 @@
 [data-theme="dark"] .course-card__footer { border-top-color: rgba(255,255,255,0.06); }
 .course-card__apply { flex: 1; justify-content: center; }
 
-/* ─── Responsive ────────────────────────────────────────────── *
+/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .courses__grid { grid-template-columns: repeat(2, 1fr); }
 }

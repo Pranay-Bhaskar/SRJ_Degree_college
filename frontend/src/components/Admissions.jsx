@@ -1,4 +1,3 @@
-{/*
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -29,7 +28,7 @@ export default function Admissions() {
           <div className="section-divider" />
         </motion.div>
 
-        {/* Admission Steps Timeline *
+        {/* Admission Steps Timeline */}
         <div className="admissions__timeline">
           {admissionsSteps.map((step, idx) => (
             <motion.div
@@ -57,7 +56,7 @@ export default function Admissions() {
         </div>
 
         <div className="admissions__bottom">
-          {/* Important Dates *
+          {/* Important Dates */}
           <motion.div
             className="admissions__card"
             initial={{ opacity: 0, y: 30 }}
@@ -74,7 +73,8 @@ export default function Admissions() {
               ))}
             </ul>
           </motion.div>
-          {/* Required Documents *
+
+          {/* Required Documents */}
           <motion.div
             className="admissions__card"
             initial={{ opacity: 0, y: 30 }}
@@ -92,7 +92,7 @@ export default function Admissions() {
             </ul>
           </motion.div>
 
-          {/* CTA Card *
+          {/* CTA Card */}
           <motion.div
             className="admissions__cta-card"
             initial={{ opacity: 0, y: 30 }}
@@ -121,4 +121,3 @@ export default function Admissions() {
     </section>
   );
 }
-*/}

@@ -1,5 +1,4 @@
-{/*
-  import { useRef } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { FiArrowRight, FiClock, FiUsers } from "react-icons/fi";
@@ -63,13 +62,13 @@ export default function Courses() {
                 variants={cardVariants}
                 style={{ "--card-color": c.border }}
               >
-                {/* Top Accent *
+                {/* Top Accent */}
                 <div className="course-card__top" style={{ background: c.bg }}>
                   <span className="course-card__icon">{course.icon}</span>
                   <span className={`badge ${c.badge}`}>{course.type}</span>
                 </div>
 
-                {/* Body *
+                {/* Body */}
                 <div className="course-card__body">
                   <h3 className="course-card__title">{course.name}</h3>
                   <p className="course-card__desc">{course.description}</p>
@@ -85,13 +84,13 @@ export default function Courses() {
                     </div>
                   </div>
 
-                  {/* Eligibility *
+                  {/* Eligibility */}
                   <div className="course-card__eligibility">
                     <span className="course-card__elig-label">Eligibility:</span>
                     <span className="course-card__elig-val">{course.eligibility}</span>
                   </div>
 
-                  {/* Highlights *
+                  {/* Highlights */}
                   <ul className="course-card__highlights">
                     {course.highlights.map((h) => (
                       <li key={h} className="course-card__highlight">
@@ -102,7 +101,7 @@ export default function Courses() {
                   </ul>
                 </div>
 
-                {/* Footer CTA *
+                {/* Footer CTA */}
                 <div className="course-card__footer">
                   <button className="btn btn-primary btn-sm course-card__apply" onClick={handleApply}>
                     Apply Now <FiArrowRight size={14} />
@@ -117,6 +116,3 @@ export default function Courses() {
     </section>
   );
 }
-
-
-*/}
