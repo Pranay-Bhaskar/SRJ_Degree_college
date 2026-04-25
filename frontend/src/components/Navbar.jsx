@@ -426,13 +426,27 @@ const navLinks = [
     path: "/courses",
     dropdown: [
       { label: "All Courses", path: "/courses" },
-      { label: "BA Telugu (Aided)", path: "/courses#ba-telugu" },
-      { label: "B.Sc Dairy Science", path: "/courses#bsc-dairy" },
-      { label: "B.Sc Food Science & Technology", path: "/courses#bsc-food-science" },
-      { label: "BCA", path: "/courses#bca" },
-      { label: "B.Com", path: "/courses#bcom" },
+      { label: "B.A Honours (Political Science)", path: "/courses#ba-political-science" },
+      { label: "B.Com Honours (General)", path: "/courses#bcom-general" },
+      { label: "B.A Honours (Special Telugu)", path: "/courses#ba-telugu" },
+      { label: "B.A Honours (Economics)", path: "/courses#ba-economics" },
+      { label: "B.A Honours (History)", path: "/courses#ba-history" },
+      { label: "B.Com Honours (Computer Applications)", path: "/courses#bcom-computer-apps" },
+      { label: "B.Sc Honours (Computer Science)", path: "/courses#bsc-computer-science" },
+      { label: "B.Sc Honours (Dairy Science)", path: "/courses#bsc-dairy-science" },
+      { label: "B.Sc Honours (Statistics)", path: "/courses#bsc-statistics" },
+      { label: "B.Sc Honours (Biotechnology)", path: "/courses#bsc-biotech" },
+      { label: "B.Sc Honours (Food Science & Technology)", path: "/courses#bsc-food-science" },
+      { label: "B.Sc Honours (Chemistry)", path: "/courses#bsc-chemistry" },
+      { label: "B.Voc Honours (Dairy Technology)", path: "/courses#bvoc-dairy-tech" },
+      { label: "B.Sc Honours (Cloud Computing)", path: "/courses#bsc-cloud-computing" },
+      { label: "BMS Honours (E-Commerce Operations)", path: "/courses#bms-ecommerce" },
+      { label: "BBA Honours (Digital Marketing)", path: "/courses#bba-digital-marketing" },
+      { label: "BCA Honours", path: "/courses#bca" },
+      { label: "BCA Honours (Artificial Intelligence)", path: "/courses#bca-ai" },
     ],
   },
+
   { label: "Admissions", path: "/admissions" },
   { label: "Management", path: "/management" },
   { label: "Facilities", path: "/#facilities" },
@@ -546,7 +560,9 @@ export default function Navbar() {
           <AnimatePresence>
             {activeDropdown === link.label && (
               <motion.div
-                className="navbar__dropdown"
+                className={`navbar__dropdown ${
+                  link.label === "Courses" ? "courses-dropdown" : ""
+                }`}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 8 }}
@@ -577,6 +593,7 @@ export default function Navbar() {
             )}
           </AnimatePresence>
         )}
+
       </div>
     );
   };
