@@ -138,7 +138,7 @@ export default function Hero() {
           transition={{ duration: 0.85, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
         >
           <img
-            src="/assets/college-building.jpg"
+            src="/hero.png"
             alt="SRJ Degree College Building"
             className="hero__img"
           />
