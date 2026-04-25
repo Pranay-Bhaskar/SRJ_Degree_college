@@ -1,176 +1,114 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { FiArrowRight, FiBookOpen, FiMapPin, FiChevronDown } from "react-icons/fi";
+import { useEffect, useRef } from "react";
+import { motion, animate } from "framer-motion";
+import { FiArrowRight } from "react-icons/fi";
 import {
   HiAcademicCap,
   HiUserGroup,
   HiBookOpen,
-  HiLightBulb,
+  HiBuildingLibrary,
+  HiShieldCheck,
   HiStar,
   HiGlobeAlt,
-  HiShieldCheck,
 } from "react-icons/hi2";
 import "./Hero.css";
 
-/* ─── Animated Counter ─────────────────────────────────────────── */
+/* ── Animated Counter ────────────────────────────────── */
 function Counter({ to, suffix = "" }) {
-  const nodeRef = useRef(null);
+  const ref = useRef(null);
   useEffect(() => {
-    const node = nodeRef.current;
-    const controls = animate(0, parseInt(to), {
-      duration: 2.2,
-      delay: 0.8,
+    const node = ref.current;
+    const ctrl = animate(0, parseInt(to), {
+      duration: 2,
+      delay: 1,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate(v) {
-        if (node) node.textContent = Math.floor(v) + suffix;
-      },
+      onUpdate: (v) => { if (node) node.textContent = Math.floor(v) + suffix; },
     });
-    return controls.stop;
+    return ctrl.stop;
   }, [to, suffix]);
-  return <span ref={nodeRef}>0{suffix}</span>;
-}
-
-/* ─── Floating Particle ────────────────────────────────────────── */
-function Particle({ style }) {
-  return <div className="particle" style={style} />;
+  return <span ref={ref}>0{suffix}</span>;
 }
 
 const stats = [
-  { icon: HiAcademicCap, value: "50", suffix: "+", label: "Years of Legacy",   sub: "Excellence in Education" },
-  { icon: HiUserGroup,   value: "5000", suffix: "+", label: "Students",         sub: "Empowered Minds" },
-  { icon: HiBookOpen,    value: "25",  suffix: "+", label: "Courses",           sub: "Across Disciplines" },
-  { icon: HiLightBulb,  value: "30",  suffix: "+", label: "Dedicated Faculty", sub: "Guiding Futures" },
+  { icon: HiAcademicCap,     value: "50",   suffix: "+", label: "Years of Legacy",  sub: "Excellence in Education" },
+  { icon: HiUserGroup,       value: "5000", suffix: "+", label: "Students",          sub: "Empowered Minds" },
+  { icon: HiBookOpen,        value: "25",   suffix: "+", label: "Courses",           sub: "Across Disciplines" },
+  { icon: HiBuildingLibrary, value: "30",   suffix: "+", label: "Dedicated Faculty", sub: "Guiding Futures" },
 ];
 
 const values = [
-  { icon: HiShieldCheck, label: "Quality",   sub: "Education" },
-  { icon: HiStar,        label: "Holistic",  sub: "Development" },
-  { icon: HiUserGroup,   label: "Community", sub: "Engagement" },
-  { icon: HiGlobeAlt,    label: "Excellence",sub: "Always" },
+  { icon: HiShieldCheck,     label: "Quality",    sub: "Education" },
+  { icon: HiStar,            label: "Holistic",   sub: "Development" },
+  { icon: HiUserGroup,       label: "Community",  sub: "Engagement" },
+  { icon: HiGlobeAlt,        label: "Excellence", sub: "Always" },
 ];
 
-const particles = Array.from({ length: 18 }, (_, i) => ({
-  width:  `${6 + Math.random() * 10}px`,
-  height: `${6 + Math.random() * 10}px`,
-  left:   `${Math.random() * 100}%`,
-  top:    `${Math.random() * 100}%`,
-  animationDelay:    `${Math.random() * 5}s`,
-  animationDuration: `${5 + Math.random() * 6}s`,
-  opacity: 0.12 + Math.random() * 0.2,
-}));
-
-/* ─── Stagger helpers ──────────────────────────────────────────── */
-const fadeUp = (delay = 0, y = 30) => ({
-  hidden:  { opacity: 0, y },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] } },
-});
-const fadeLeft = (delay = 0) => ({
-  hidden:  { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.85, delay, ease: [0.16, 1, 0.3, 1] } },
+const fadeUp = (delay = 0) => ({
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] } },
 });
 
 export default function Hero() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-300, 300], [4, -4]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-4, 4]);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left - rect.width / 2);
-    mouseY.set(e.clientY - rect.top - rect.height / 2);
-  };
-
   const handleScroll = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="hero" id="home" onMouseMove={handleMouseMove}>
-      {/* ── Ambient Background ────────────────────────────── */}
-      <div className="hero__bg-mesh" />
-      <div className="hero__bg-wave" />
-      {particles.map((p, i) => <Particle key={i} style={p} />)}
+    <section className="hero" id="home">
 
-      {/* ── Grid Lines ────────────────────────────────────── */}
-      <div className="hero__grid-lines" aria-hidden="true">
-        {[...Array(6)].map((_, i) => <div key={i} className="grid-line" />)}
-      </div>
+      {/* Sky-blue circle behind the building image */}
+      <div className="hero__circle-bg" aria-hidden="true" />
 
-      {/* ══════════════════════════════════════════════════
-          MAIN CONTENT
-      ══════════════════════════════════════════════════ */}
-      <div className="hero__body container">
+      {/* ══ MAIN LAYOUT ══════════════════════════════════ */}
+      <div className="hero__body">
 
-        {/* ── LEFT ──────────────────────────────────────── */}
+        {/* LEFT COLUMN */}
         <div className="hero__left">
-          {/* Welcome pill */}
+
+          {/* "WELCOME TO" label */}
           <motion.div
-            className="hero__welcome-pill"
+            className="hero__welcome"
             variants={fadeUp(0)}
             initial="hidden"
             animate="visible"
           >
-            <span className="pill__dot" />
-            <span>WELCOME TO</span>
+            <span className="welcome__bar" />
+            <span className="welcome__text">WELCOME TO</span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Main Heading */}
           <motion.h1
             className="hero__heading"
-            variants={fadeUp(0.12)}
+            variants={fadeUp(0.1)}
             initial="hidden"
             animate="visible"
           >
-            <span className="heading__top">Government College</span>
-            <span className="heading__main">
-              SRJ Degree<br />College
-            </span>
+            <span className="h1__top">Government College</span>
+            <span className="h1__main">SRJ Degree College</span>
           </motion.h1>
 
-          {/* Gold divider */}
+          {/* Gold rule */}
           <motion.div
-            className="hero__divider"
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="hero__rule"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.55, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
           />
 
           {/* Subtitle */}
           <motion.p
             className="hero__subtitle"
-            variants={fadeUp(0.4)}
+            variants={fadeUp(0.34)}
             initial="hidden"
             animate="visible"
           >
-            Empowering minds. Enriching futures. Building responsible citizens
-            through quality education and holistic development.
+            Empowering minds. Enriching futures. Building
+            <br />responsible citizens through quality education
+            <br />and holistic development.
           </motion.p>
-
-          {/* Location */}
-          <motion.div
-            className="hero__location"
-            variants={fadeUp(0.5)}
-            initial="hidden"
-            animate="visible"
-          >
-            <FiMapPin size={13} />
-            <span>Atmakur, Nellore — Andhra Pradesh 524&nbsp;322</span>
-            &nbsp;·&nbsp;
-            <a
-              href="https://vsu.ac.in"
-              target="_blank"
-              rel="noreferrer"
-              className="hero__affiliation-link"
-            >
-              Affiliated to VSU
-            </a>
-          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             className="hero__ctas"
-            variants={fadeUp(0.6)}
+            variants={fadeUp(0.46)}
             initial="hidden"
             animate="visible"
           >
@@ -178,147 +116,75 @@ export default function Hero() {
               className="btn btn--primary"
               onClick={() => handleScroll("courses")}
             >
-              <span>Explore Courses</span>
-              <FiArrowRight />
+              <FiArrowRight strokeWidth={2.5} />
+              Explore Courses
             </button>
             <button
               className="btn btn--outline"
               onClick={() => handleScroll("about")}
             >
-              <FiBookOpen />
-              <span>About Our College</span>
+              <CollegeIcon />
+              About Our College
             </button>
           </motion.div>
 
-          {/* Admissions badge */}
-          <motion.div
-            className="hero__admissions"
-            variants={fadeUp(0.7)}
-            initial="hidden"
-            animate="visible"
-          >
-            <span className="admissions__dot" />
-            <span>🎓 Admissions Open 2026–27 · Apply Now</span>
-          </motion.div>
         </div>
 
-        {/* ── RIGHT — Building Image ─────────────────────── */}
+        {/* RIGHT COLUMN — Building photo */}
         <motion.div
           className="hero__right"
-          variants={fadeLeft(0.3)}
-          initial="hidden"
-          animate="visible"
-          style={{ rotateX, rotateY, transformPerspective: 1200 }}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.85, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Decorative rings */}
-          <div className="ring ring--1" />
-          <div className="ring ring--2" />
-          <div className="ring ring--3" />
-
-          {/* Glow blob */}
-          <div className="hero__glow" />
-
-          {/* Image frame */}
-          <div className="hero__image-frame">
-            <div className="image-inner">
-              <img
-                src="/hero.png"
-                alt="SRJ Degree College Building"
-                className={`building-img${imageLoaded ? " loaded" : ""}`}
-                onLoad={() => setImageLoaded(true)}
-              />
-              {/* Shimmer overlay while loading */}
-              {!imageLoaded && <div className="image-shimmer" />}
-            </div>
-            {/* Corner accents */}
-            <div className="frame-corner frame-corner--tl" />
-            <div className="frame-corner frame-corner--tr" />
-            <div className="frame-corner frame-corner--bl" />
-            <div className="frame-corner frame-corner--br" />
-          </div>
-
-          {/* Floating info chips */}
-          <motion.div
-            className="chip chip--est"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.9, type: "spring", stiffness: 200 }}
-          >
-            <HiAcademicCap size={16} />
-            <div>
-              <strong>Est. 1965</strong>
-              <span>Govt. Aided</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="chip chip--accredited"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.1, type: "spring", stiffness: 200 }}
-          >
-            <HiShieldCheck size={16} />
-            <div>
-              <strong>VSU Affiliated</strong>
-              <span>Recognized</span>
-            </div>
-          </motion.div>
+          <img
+            src="/assets/college-building.jpg"
+            alt="SRJ Degree College Building"
+            className="hero__img"
+          />
         </motion.div>
       </div>
 
-      {/* ══════════════════════════════════════════════════
-          STATS STRIP
-      ══════════════════════════════════════════════════ */}
+      {/* ══ STATS CARD ═══════════════════════════════════ */}
       <motion.div
-        className="hero__stats-strip"
-        initial={{ opacity: 0, y: 40 }}
+        className="hero__stats"
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.65, delay: 0.7 }}
       >
         {stats.map(({ icon: Icon, value, suffix, label, sub }, i) => (
-          <div key={label} className="stat-item">
-            <div className="stat-icon-wrap">
-              <Icon size={20} />
+          <div key={label} className="stat">
+            <div className="stat__icon"><Icon size={24} /></div>
+            <div className="stat__info">
+              <span className="stat__value"><Counter to={value} suffix={suffix} /></span>
+              <span className="stat__label">{label}</span>
+              <span className="stat__sub">{sub}</span>
             </div>
-            <div className="stat-text">
-              <span className="stat-value">
-                <Counter to={value} suffix={suffix} />
-              </span>
-              <span className="stat-label">{label}</span>
-              <span className="stat-sub">{sub}</span>
-            </div>
-            {i < stats.length - 1 && <div className="stat-divider" />}
+            {i < stats.length - 1 && <div className="stat__sep" />}
           </div>
         ))}
       </motion.div>
 
-      {/* ══════════════════════════════════════════════════
-          BOTTOM BAR — Quote + Values
-      ══════════════════════════════════════════════════ */}
+      {/* ══ DARK FOOTER STRIP ════════════════════════════ */}
       <motion.div
-        className="hero__bottom-bar"
+        className="hero__footer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.9, delay: 1.1 }}
+        transition={{ duration: 0.65, delay: 0.9 }}
       >
-        <div className="bottom-bar__quote">
-          <span className="quotemark">"</span>
-          <p>
-            Education is the most powerful weapon which you can use to change
-            the world.
-          </p>
-          <cite>— Nelson Mandela</cite>
+        <div className="footer__quote">
+          <span className="footer__qmark">"</span>
+          <div>
+            <p>Education is the most powerful weapon which you can use to change the world.</p>
+            <cite>– Nelson Mandela</cite>
+          </div>
         </div>
 
-        <div className="bottom-bar__divider" />
-
-        <div className="bottom-bar__values">
+        <div className="footer__values">
           {values.map(({ icon: Icon, label, sub }) => (
-            <div key={label} className="value-item">
-              <div className="value-icon">
-                <Icon size={18} />
-              </div>
-              <div className="value-text">
+            <div key={label} className="footer__val">
+              <div className="footer__val-icon"><Icon size={22} /></div>
+              <div className="footer__val-text">
                 <strong>{label}</strong>
                 <span>{sub}</span>
               </div>
@@ -327,15 +193,15 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Scroll hint */}
-      <motion.div
-        className="hero__scroll-hint"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
-        <FiChevronDown size={20} />
-      </motion.div>
     </section>
+  );
+}
+
+function CollegeIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+    </svg>
   );
 }
