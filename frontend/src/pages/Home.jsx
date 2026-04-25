@@ -1,11 +1,11 @@
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import Hero from "../components/Hero";
 import About from "../components/About";
-//import WhyChooseUs from "../components/WhyChooseUs";
-//import Courses from "../components/Courses";
-//import Facilities from "../components/Facilities";
-//import Management from "../components/Management";
-//import Admissions from "../components/Admissions";
+// import WhyChooseUs from "../components/WhyChooseUs";
+import Courses from "../components/Courses";
+import Facilities from "../components/Facilities";
+import Management from "../components/Management";
+import Admissions from "../components/Admissions";
 import News from "../components/News";
 import Gallery from "../components/Gallery";
 import Placements from "../components/Placements";
@@ -30,7 +30,7 @@ export default function Home() {
         <Hero />
         <About />
         {/* <WhyChooseUs /> */}
-        {/* <Courses /> 
+        <Courses />
         <Facilities />
         <Management />
         <Admissions />
