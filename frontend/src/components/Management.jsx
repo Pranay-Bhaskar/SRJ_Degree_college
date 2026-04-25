@@ -1,3 +1,4 @@
+{/*
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -36,7 +37,7 @@ export default function Management() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
-              {/* Avatar */}
+              {/* Avatar *
               <div className="mgmt-card__avatar-wrap">
                 <div className="mgmt-card__avatar">
                   <span className="mgmt-card__initials">{person.initials}</span>
@@ -44,19 +45,19 @@ export default function Management() {
                 <div className="mgmt-card__avatar-ring" />
               </div>
 
-              {/* Info */}
+              {/* Info *
               <div className="mgmt-card__info">
                 <h3 className="mgmt-card__name">{person.name}</h3>
                 <span className="mgmt-card__role badge badge-primary">{person.role}</span>
               </div>
 
-              {/* Message */}
+              {/* Message *
               <div className="mgmt-card__message">
                 <span className="mgmt-card__quote">"</span>
                 <p>{person.message}</p>
               </div>
 
-              {/* Bottom Accent */}
+              {/* Bottom Accent *
               <div className="mgmt-card__accent" />
             </motion.div>
           ))}
@@ -65,3 +66,4 @@ export default function Management() {
     </section>
   );
 }
+*/}

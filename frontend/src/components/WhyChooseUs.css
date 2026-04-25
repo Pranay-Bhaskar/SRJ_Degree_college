@@ -1,4 +1,4 @@
-/* ─── Why Choose Us ─────────────────────────────────────────── */
+/* ─── Why Choose Us ─────────────────────────────────────────── *
 .why__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,7 +29,7 @@
   width: 100%;
 }
 
-/* Accent Bar at bottom */
+/* Accent Bar at bottom *
 .why__card-accent {
   position: absolute;
   bottom: 0;
@@ -41,7 +41,7 @@
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Icon */
+/* Icon *
 .why__icon-wrap {
   position: relative;
   width: 72px;
@@ -93,7 +93,7 @@
   line-height: 1.75;
 }
 
-/* ─── Responsive ────────────────────────────────────────────── */
+/* ─── Responsive ────────────────────────────────────────────── *
 @media (max-width: 1024px) {
   .why__grid { grid-template-columns: repeat(2, 1fr); }
 }

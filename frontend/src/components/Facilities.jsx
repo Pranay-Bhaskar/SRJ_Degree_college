@@ -1,3 +1,4 @@
+{/*
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
@@ -63,3 +64,4 @@ export default function Facilities() {
     </section>
   );
 }
+*/}
