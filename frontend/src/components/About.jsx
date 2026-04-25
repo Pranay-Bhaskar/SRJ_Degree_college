@@ -65,7 +65,7 @@ export default function About() {
             {/* Photo + 40+ card */}
             <div className="about__photo-wrap">
               <img
-                src="/assets/college-building.jpg"
+                src="/hero.png"
                 alt="DR. SRJ Degree College — Atmakur, Nellore"
                 className="about__photo"
               />
