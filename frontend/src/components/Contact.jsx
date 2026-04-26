@@ -1,107 +1,84 @@
 /**
- * Contact.jsx  —  SRJ Degree College
- *
- * EMAIL SETUP (frontend-only via EmailJS):
- * 1. npm install @emailjs/browser
- * 2. Sign up free at https://www.emailjs.com
- * 3. Create a Service (Gmail/SMTP) → copy Service ID
- * 4. Create an Email Template with these variables:
- *      {{from_name}}, {{from_email}}, {{phone}},
- *      {{course}}, {{message}}, {{to_name}}
- * 5. Copy your Public Key from Account → API Keys
- * 6. Replace the three constants below ↓
+ * ╔══════════════════════════════════════════════════════════╗
+ * ║        HOW TO SEND EMAILS FROM PURE REACT (No Backend)  ║
+ * ║                  Using EmailJS + Gmail                   ║
+ * ╠══════════════════════════════════════════════════════════╣
+ * ║                                                          ║
+ * ║  STEP 1 — Install                                        ║
+ * ║    npm install @emailjs/browser                          ║
+ * ║                                                          ║
+ * ║  STEP 2 — Create free account at emailjs.com             ║
+ * ║                                                          ║
+ * ║  STEP 3 — Connect your Gmail                             ║
+ * ║    Dashboard → Email Services → Add New Service          ║
+ * ║    → Choose Gmail → Connect Account → Copy SERVICE_ID    ║
+ * ║                                                          ║
+ * ║  STEP 4 — Create Email Template                          ║
+ * ║    Dashboard → Email Templates → Create New              ║
+ * ║    Use variables: {{from_name}} {{from_email}}           ║
+ * ║                   {{phone}} {{course}} {{message}}       ║
+ * ║    Copy TEMPLATE_ID                                      ║
+ * ║                                                          ║
+ * ║  STEP 5 — Get Public Key                                 ║
+ * ║    Dashboard → Account → General → Public Key            ║
+ * ║                                                          ║
+ * ║  STEP 6 — Create .env file in project root               ║
+ * ║    VITE_EMAILJS_SERVICE_ID=service_xxxxxxx               ║
+ * ║    VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx             ║
+ * ║    VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxx          ║
+ * ║                                                          ║
+ * ║  That's it. EmailJS sends via Gmail SMTP — no backend!   ║
+ * ╚══════════════════════════════════════════════════════════╝
  */
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
-  FiMapPin, FiPhone, FiMail, FiExternalLink,
-  FiSend, FiLock, FiClock, FiArrowRight,
+  FiMapPin, FiPhone, FiMail, FiClock,
+  FiExternalLink, FiSend, FiLock,
 } from "react-icons/fi";
 import {
+  HiOutlineEnvelope, HiOutlineUser, HiOutlinePhone,
+  HiOutlinePencil, HiOutlineAcademicCap,
   HiOutlineQuestionMarkCircle, HiOutlineDocumentText,
-  HiOutlineMapPin, HiOutlinePhone, HiOutlineEnvelope,
-  HiOutlineUser, HiOutlinePencil, HiOutlineAcademicCap,
+  HiOutlineMapPin, HiOutlineCheckCircle, HiOutlineXCircle,
 } from "react-icons/hi2";
 import { collegeInfo } from "../data/mockData";
 import "./Contact.css";
 
-/* ── EmailJS config — replace these ─────────────────── */
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+/* ── EmailJS credentials from .env ──────────────────────
+   If you don't use Vite, replace import.meta.env.VITE_*
+   with process.env.REACT_APP_* for CRA                  */
+const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-/* ── Static data ──────────────────────────────────────── */
-const contactDetails = [
+/* ── Static content ──────────────────────────────────── */
+const INFO_ROWS = [
   {
-    icon:  <FiMapPin size={18} />,
-    color: "navy",
-    label: "Address",
-    content: (
-      <>
-        Dr. SRJ Degree College, Atmakur,<br />
-        Nellore Palem, Andhra Pradesh 524322
-      </>
-    ),
+    icon:  <FiMapPin size={17} />, variant: "navy", label: "Address",
+    value: <>Dr. SRJ Degree College, Atmakur,<br/>Nellore Palem, Andhra Pradesh 524322</>,
   },
   {
-    icon:  <FiPhone size={18} />,
-    color: "gold",
-    label: "Phone",
-    content: (
-      <>
-        <a href="tel:+919876543210">+91 98765 43210</a><br />
-        <a href="tel:+918765432109">+91 87654 32109</a>
-      </>
-    ),
+    icon:  <FiPhone size={17} />, variant: "gold", label: "Phone",
+    value: <><a href="tel:+919876543210">+91 98765 43210</a><br/><a href="tel:+918765432109">+91 87654 32109</a></>,
   },
   {
-    icon:  <FiMail size={18} />,
-    color: "navy",
-    label: "Email",
-    content: (
-      <a href={`mailto:${collegeInfo.email}`}>{collegeInfo.email}</a>
-    ),
+    icon:  <FiMail size={17} />, variant: "navy", label: "Email",
+    value: <a href={`mailto:${collegeInfo.email}`}>{collegeInfo.email}</a>,
   },
   {
-    icon:  <FiClock size={18} />,
-    color: "gold",
-    label: "Working Hours",
-    content: (
-      <>
-        Mon – Sat : 9:00 AM – 5:00 PM<br />
-        (Except Public Holidays)
-      </>
-    ),
+    icon:  <FiClock size={17} />, variant: "gold", label: "Working Hours",
+    value: <>Mon – Sat : 9:00 AM – 5:00 PM<br/>(Except Public Holidays)</>,
   },
 ];
 
-const quickLinks = [
-  {
-    icon:  <HiOutlineQuestionMarkCircle size={22} />,
-    color: "navy",
-    title: "General Inquiries",
-    sub:   "For any general questions about the college.",
-  },
-  {
-    icon:  <HiOutlineDocumentText size={22} />,
-    color: "gold",
-    title: "Admissions Help",
-    sub:   "Get guidance on courses, eligibility & admissions.",
-  },
-  {
-    icon:  <HiOutlineMapPin size={22} />,
-    color: "navy",
-    title: "Visit Campus",
-    sub:   "We welcome you to visit and experience our campus.",
-  },
-  {
-    icon:  <HiOutlinePhone size={22} />,
-    color: "gold",
-    title: "Need Support?",
-    sub:   "For any support, feel free to reach out anytime.",
-  },
+const QUICK = [
+  { icon: <HiOutlineQuestionMarkCircle size={22}/>, variant:"navy", title:"General Inquiries",  sub:"For any general questions about the college." },
+  { icon: <HiOutlineDocumentText size={22}/>,       variant:"gold", title:"Admissions Help",    sub:"Get guidance on courses, eligibility & admissions." },
+  { icon: <HiOutlineMapPin size={22}/>,             variant:"navy", title:"Visit Campus",       sub:"We welcome you to visit and experience our campus." },
+  { icon: <HiOutlinePhone size={22}/>,              variant:"gold", title:"Need Support?",      sub:"For any support, feel free to reach out anytime." },
 ];
 
 const COURSES = [
@@ -112,142 +89,141 @@ const COURSES = [
   "B.Com",
 ];
 
-const INIT = { name: "", email: "", phone: "", course: "", message: "" };
+const EMPTY = { name:"", email:"", phone:"", course:"", message:"" };
 
-/* ── Animation helpers ────────────────────────────────── */
-const fadeUp = (delay = 0) => ({
-  hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] } },
-});
-const fadeLeft  = (d = 0) => ({
-  hidden:  { opacity: 0, x: -36 },
-  visible: { opacity: 1, x: 0,  transition: { duration: 0.65, delay: d, ease: [0.16, 1, 0.3, 1] } },
-});
-const fadeRight = (d = 0) => ({
-  hidden:  { opacity: 0, x: 36 },
-  visible: { opacity: 1, x: 0,  transition: { duration: 0.65, delay: d, ease: [0.16, 1, 0.3, 1] } },
-});
+/* ── Framer helpers ──────────────────────────────────── */
+const fadeUp    = (d=0) => ({ hidden:{opacity:0,y:24},    visible:{opacity:1,y:0,  transition:{duration:0.6,delay:d,ease:[0.16,1,0.3,1]}} });
+const fadeLeft  = (d=0) => ({ hidden:{opacity:0,x:-36},   visible:{opacity:1,x:0,  transition:{duration:0.65,delay:d,ease:[0.16,1,0.3,1]}} });
+const fadeRight = (d=0) => ({ hidden:{opacity:0,x:36},    visible:{opacity:1,x:0,  transition:{duration:0.65,delay:d,ease:[0.16,1,0.3,1]}} });
 
 /* ═══════════════════════════════════════════════════════
    COMPONENT
 ═══════════════════════════════════════════════════════ */
 export default function Contact() {
-  const ref    = useRef(null);
-  const formRef = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const sectionRef = useRef(null);
+  const formRef    = useRef(null);
+  const inView     = useInView(sectionRef, { once:true, margin:"-80px" });
 
-  const [form,      setForm]      = useState(INIT);
-  const [errors,    setErrors]    = useState({});
-  const [status,    setStatus]    = useState("idle"); // idle | sending | success | error
-  const [charCount, setCharCount] = useState(0);
+  const [form,    setForm]    = useState(EMPTY);
+  const [errors,  setErrors]  = useState({});
+  const [status,  setStatus]  = useState("idle"); // idle | sending | success | error
+  const [chars,   setChars]   = useState(0);
 
-  /* Validate */
+  /* Initialise EmailJS once */
+  useEffect(() => {
+    if (PUBLIC_KEY) emailjs.init(PUBLIC_KEY);
+  }, []);
+
+  /* ── Validation ── */
   const validate = () => {
     const e = {};
-    if (!form.name.trim())                          e.name    = "Full name is required";
-    if (!/\S+@\S+\.\S+/.test(form.email))           e.email   = "Valid email required";
-    if (!/^\d{10}$/.test(form.phone.replace(/\s/g,""))) e.phone = "10-digit phone number required";
-    if (!form.message.trim())                       e.message = "Please enter your message";
+    if (!form.name.trim())                                  e.name    = "Full name is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))   e.email   = "Valid email address required";
+    if (!/^\d{10}$/.test(form.phone.replace(/[\s\-]/g,""))) e.phone  = "Enter a valid 10-digit number";
+    if (!form.message.trim())                               e.message = "Please write your message";
     return e;
   };
 
-  const handleChange = (e) => {
+  /* ── Field change ── */
+  const onChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-    if (name === "message") setCharCount(value.length);
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
+    setForm(p => ({ ...p, [name]: value }));
+    if (name === "message") setChars(value.length);
+    if (errors[name]) setErrors(p => ({ ...p, [name]: undefined }));
   };
 
-  const handleSubmit = async (e) => {
+  /* ── Submit ── */
+  const onSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
 
     setStatus("sending");
     try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        EMAILJS_PUBLIC_KEY
-      );
+      /* emailjs.sendForm reads <input name="..."> directly from the DOM form */
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
       setStatus("success");
-      setTimeout(() => { setForm(INIT); setCharCount(0); setStatus("idle"); }, 5000);
-    } catch {
+      /* Auto-reset after 6 s */
+      setTimeout(() => { setForm(EMPTY); setChars(0); setStatus("idle"); }, 6000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
+  /* ── Derived ── */
+  const isSending = status === "sending";
+  const isSuccess = status === "success";
+  const isError   = status === "error";
+
   return (
-    <section className="contact" id="contact" ref={ref}>
+    <section className="contact" id="contact" ref={sectionRef}>
       <div className="contact__container">
 
-        {/* ════════════════ HEADER ═════════════════════ */}
-        <motion.div
+        {/* ════ HEADER ════════════════════════════════ */}
+        <motion.header
           className="contact__header"
           variants={fadeUp(0)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <div className="contact__tag">
-            <HiOutlineEnvelope size={14} />
+          <div className="contact__pill">
+            <HiOutlineEnvelope size={13}/>
             <span>GET IN TOUCH</span>
           </div>
-          <h2 className="contact__title">Contact Us</h2>
-          <div className="contact__title-rule" />
-          <p className="contact__subtitle">
-            Have a question or need assistance? Reach out to us —<br />
+          <h2 className="contact__h2">Contact Us</h2>
+          <div className="contact__h2-rule"/>
+          <p className="contact__subhead">
+            Have a question or need assistance? Reach out to us —<br/>
             our team will get back to you within 24 hours.
           </p>
-        </motion.div>
+        </motion.header>
 
-        {/* ════════════════ MAIN GRID ══════════════════ */}
+        {/* ════ TWO-COLUMN GRID ═══════════════════════ */}
         <div className="contact__grid">
 
-          {/* ── LEFT — Info + Map ──────────────────── */}
+          {/* ── LEFT — Info + Map ────────────────── */}
           <motion.div
             className="contact__info"
             variants={fadeLeft(0.1)}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            <h3 className="info__title">Get in Touch</h3>
-            <div className="info__title-rule" />
+            <h3 className="info__h3">Get in Touch</h3>
+            <div className="info__rule"/>
             <p className="info__desc">
-              We're here to help! You can reach us through any of the
-              following channels.
+              We're here to help! You can reach us through any of the following channels.
             </p>
 
-            <div className="info__details">
-              {contactDetails.map(({ icon, color, label, content }) => (
-                <div key={label} className="info__row">
-                  <div className={`info__icon info__icon--${color}`}>{icon}</div>
-                  <div className="info__text">
-                    <span className="info__label">{label}</span>
-                    <span className="info__value">{content}</span>
+            <ul className="info__list">
+              {INFO_ROWS.map(({ icon, variant, label, value }) => (
+                <li key={label} className="info__item">
+                  <div className={`info__dot info__dot--${variant}`}>{icon}</div>
+                  <div className="info__body">
+                    <strong>{label}</strong>
+                    <span>{value}</span>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            {/* Map embed */}
-            <div className="contact__map-wrap">
+            {/* Map */}
+            <div className="contact__map">
               <a
                 href={collegeInfo.mapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="map__open-btn"
+                className="map__chip"
               >
-                <FiExternalLink size={13} />
-                Open in Google Maps
+                <FiExternalLink size={12}/> Open in Google Maps
               </a>
               <iframe
                 src={collegeInfo.mapsEmbed}
                 width="100%"
                 height="220"
-                style={{ border: 0 }}
-                allowFullScreen=""
+                style={{ border:0 }}
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Dr. SRJ Degree College Location"
@@ -255,158 +231,148 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* ── RIGHT — Form card ──────────────────── */}
+          {/* ── RIGHT — Form card ─────────────────── */}
           <motion.div
             className="contact__card"
             variants={fadeRight(0.18)}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            <h3 className="card__title">Send Us a Message</h3>
-            <div className="card__title-rule" />
+            <h3 className="card__h3">Send Us a Message</h3>
+            <div className="card__rule"/>
 
-            {/* ── Success state ── */}
-            {status === "success" ? (
-              <div className="contact__success">
-                <div className="success__icon">
-                  <svg viewBox="0 0 52 52" fill="none">
-                    <circle cx="26" cy="26" r="25" stroke="#22c55e" strokeWidth="2"/>
-                    <path d="M14 27l8 8 16-16" stroke="#22c55e" strokeWidth="2.5"
-                      strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+            {/* SUCCESS */}
+            {isSuccess ? (
+              <motion.div
+                className="form__success"
+                initial={{opacity:0, scale:0.92}}
+                animate={{opacity:1, scale:1}}
+                transition={{duration:0.45, ease:[0.16,1,0.3,1]}}
+              >
+                <div className="success__ring">
+                  <HiOutlineCheckCircle size={52} strokeWidth={1.2}/>
                 </div>
                 <h4>Message Sent Successfully!</h4>
                 <p>
-                  Thank you for reaching out,{" "}
-                  <strong>{form.name || "there"}</strong>.<br />
+                  Thank you, <strong>{form.name || "there"}</strong>!<br/>
                   Our admissions team will contact you within 24 hours.
                 </p>
-              </div>
+              </motion.div>
             ) : (
-              /* ── Form ── */
-              <form
-                ref={formRef}
-                className="contact__form"
-                onSubmit={handleSubmit}
-                noValidate
-              >
-                {/* Row 1 */}
+
+              /* FORM */
+              <form ref={formRef} className="contact__form" onSubmit={onSubmit} noValidate>
+
+                {/* Row 1 — Name + Email */}
                 <div className="form__row">
-                  <div className={`form__group${errors.name ? " form__group--err" : ""}`}>
-                    <label htmlFor="cf-name">Full Name <span>*</span></label>
-                    <div className="form__input-wrap">
-                      <HiOutlineUser className="field-icon" size={16} />
+                  <Field label="Full Name" required error={errors.name}>
+                    <div className="field__wrap">
+                      <HiOutlineUser className="field__ico" size={15}/>
                       <input
-                        id="cf-name"
                         type="text"
-                        name="name"
+                        name="from_name"      /* EmailJS template var */
                         value={form.name}
-                        onChange={handleChange}
+                        onChange={e => onChange({target:{name:"name",value:e.target.value}})}
                         placeholder="Enter your full name"
                         autoComplete="name"
+                        className={errors.name ? "field__input--err" : ""}
                       />
                     </div>
-                    {errors.name && <span className="form__err">{errors.name}</span>}
-                  </div>
+                  </Field>
 
-                  <div className={`form__group${errors.email ? " form__group--err" : ""}`}>
-                    <label htmlFor="cf-email">Email Address <span>*</span></label>
-                    <div className="form__input-wrap">
-                      <HiOutlineEnvelope className="field-icon" size={16} />
+                  <Field label="Email Address" required error={errors.email}>
+                    <div className="field__wrap">
+                      <HiOutlineEnvelope className="field__ico" size={15}/>
                       <input
-                        id="cf-email"
                         type="email"
-                        name="email"
+                        name="from_email"     /* EmailJS template var */
                         value={form.email}
-                        onChange={handleChange}
+                        onChange={e => onChange({target:{name:"email",value:e.target.value}})}
                         placeholder="Enter your email"
                         autoComplete="email"
+                        className={errors.email ? "field__input--err" : ""}
                       />
                     </div>
-                    {errors.email && <span className="form__err">{errors.email}</span>}
-                  </div>
+                  </Field>
                 </div>
 
-                {/* Row 2 */}
+                {/* Row 2 — Phone + Course */}
                 <div className="form__row">
-                  <div className={`form__group${errors.phone ? " form__group--err" : ""}`}>
-                    <label htmlFor="cf-phone">Phone Number <span>*</span></label>
-                    <div className="form__input-wrap">
-                      <HiOutlinePhone className="field-icon" size={16} />
+                  <Field label="Phone Number" required error={errors.phone}>
+                    <div className="field__wrap">
+                      <HiOutlinePhone className="field__ico" size={15}/>
                       <input
-                        id="cf-phone"
                         type="tel"
-                        name="phone"
+                        name="phone"          /* EmailJS template var */
                         value={form.phone}
-                        onChange={handleChange}
+                        onChange={e => onChange({target:{name:"phone",value:e.target.value}})}
                         placeholder="Enter 10-digit mobile number"
                         autoComplete="tel"
+                        className={errors.phone ? "field__input--err" : ""}
                       />
                     </div>
-                    {errors.phone && <span className="form__err">{errors.phone}</span>}
-                  </div>
+                  </Field>
 
-                  <div className="form__group">
-                    <label htmlFor="cf-course">Course of Interest</label>
-                    <div className="form__input-wrap form__input-wrap--select">
-                      <HiOutlineAcademicCap className="field-icon" size={16} />
+                  <Field label="Course of Interest">
+                    <div className="field__wrap field__wrap--select">
+                      <HiOutlineAcademicCap className="field__ico" size={15}/>
                       <select
-                        id="cf-course"
-                        name="course"
+                        name="course"         /* EmailJS template var */
                         value={form.course}
-                        onChange={handleChange}
+                        onChange={e => onChange({target:{name:"course",value:e.target.value}})}
                       >
                         <option value="">Select a course</option>
-                        {COURSES.map(c => <option key={c}>{c}</option>)}
+                        {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
-                      <span className="select__arrow">▾</span>
+                      <span className="select__chevron">▾</span>
                     </div>
-                  </div>
+                  </Field>
                 </div>
 
                 {/* Textarea */}
-                <div className={`form__group${errors.message ? " form__group--err" : ""}`}>
-                  <label htmlFor="cf-message">Your Message <span>*</span></label>
-                  <div className="form__textarea-wrap">
-                    <HiOutlinePencil className="field-icon field-icon--textarea" size={15} />
+                <Field label="Your Message" required error={errors.message}>
+                  <div className="field__wrap field__wrap--ta">
+                    <HiOutlinePencil className="field__ico field__ico--ta" size={14}/>
                     <textarea
-                      id="cf-message"
-                      name="message"
+                      name="message"          /* EmailJS template var */
                       rows={5}
                       value={form.message}
-                      onChange={handleChange}
+                      onChange={e => onChange({target:{name:"message",value:e.target.value}})}
                       placeholder="Tell us about your query, background, or anything you'd like to know..."
                       maxLength={500}
+                      className={errors.message ? "field__input--err" : ""}
                     />
-                    <span className="char-count">{charCount}/500</span>
+                    <span className="ta__count">{chars}/500</span>
                   </div>
-                  {errors.message && <span className="form__err">{errors.message}</span>}
-                </div>
+                </Field>
+
+                {/* Error alert */}
+                {isError && (
+                  <motion.div
+                    className="form__alert"
+                    initial={{opacity:0, y:-8}}
+                    animate={{opacity:1, y:0}}
+                  >
+                    <HiOutlineXCircle size={16}/>
+                    Failed to send. Please try again or email us directly.
+                  </motion.div>
+                )}
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className={`contact__submit${status === "sending" ? " contact__submit--loading" : ""}${status === "error" ? " contact__submit--error" : ""}`}
-                  disabled={status === "sending"}
+                  className={`contact__submit ${isError ? "contact__submit--err" : ""}`}
+                  disabled={isSending}
                 >
-                  {status === "sending" ? (
-                    <>
-                      <span className="spinner" />
-                      Sending…
-                    </>
-                  ) : status === "error" ? (
-                    "Failed — Try Again"
+                  {isSending ? (
+                    <><span className="btn__spinner"/>&nbsp;Sending your message…</>
                   ) : (
-                    <>
-                      <FiSend size={16} strokeWidth={2.5} />
-                      SEND MESSAGE
-                    </>
+                    <><FiSend size={15} strokeWidth={2.5}/>&nbsp;SEND MESSAGE</>
                   )}
                 </button>
 
-                {/* Privacy note */}
-                <p className="contact__privacy">
-                  <FiLock size={12} />
+                <p className="form__privacy">
+                  <FiLock size={11}/>
                   Your information is safe with us. We respect your privacy.
                 </p>
               </form>
@@ -414,26 +380,43 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* ════════════════ QUICK LINKS STRIP ══════════ */}
+        {/* ════ QUICK LINKS STRIP ══════════════════════ */}
         <motion.div
           className="contact__quick"
-          variants={fadeUp(0.3)}
+          variants={fadeUp(0.32)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {quickLinks.map(({ icon, color, title, sub }, i) => (
+          {QUICK.map(({ icon, variant, title, sub }, i) => (
             <div key={title} className="quick__item">
-              <div className={`quick__icon quick__icon--${color}`}>{icon}</div>
-              <div className="quick__text">
+              <div className={`quick__ico quick__ico--${variant}`}>{icon}</div>
+              <div className="quick__txt">
                 <strong>{title}</strong>
                 <span>{sub}</span>
               </div>
-              {i < quickLinks.length - 1 && <div className="quick__sep" />}
+              {i < QUICK.length - 1 && <div className="quick__sep"/>}
             </div>
           ))}
         </motion.div>
 
       </div>
     </section>
+  );
+}
+
+/* ── Small reusable Field wrapper ───────────────────── */
+function Field({ label, required, error, children }) {
+  return (
+    <div className={`form__field${error ? " form__field--err" : ""}`}>
+      <label>
+        {label}{required && <span className="lbl__req"> *</span>}
+      </label>
+      {children}
+      {error && (
+        <span className="field__errtxt">
+          <HiOutlineXCircle size={12}/> {error}
+        </span>
+      )}
+    </div>
   );
 }
