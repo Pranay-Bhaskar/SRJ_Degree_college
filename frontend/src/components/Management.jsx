@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { management } from "../data/mockData";
+//import { management } from "../data/mockData";
 import "./Management.css";
 
 export default function Management() {
