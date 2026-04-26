@@ -447,7 +447,7 @@ const navLinks = [
   },
   { label: "Admissions", path: "/admissions" },
   { label: "Management", path: "/management" },
-  { label: "Facilities", path: "/#facilities" },
+  { label: "Facilities", path: "/facilities" },
   { label: "Gallery", path: "/#gallery" },
   { label: "Placements", path: "/#placements" },
   { label: "Contact", path: "/#contact" },
@@ -558,6 +558,9 @@ export default function Navbar() {
         ) : (
           <NavLink
             to={link.path}
+            //new
+            end={link.path === "/"}
+
             className="navbar__link"
             onClick={closeMenus}
           >
@@ -628,6 +631,9 @@ export default function Navbar() {
         ) : (
           <NavLink
             to={link.path}
+            //new
+            end={link.path === "/"}
+            
             className="navbar__mobile-link"
             onClick={closeMenus}
           >
