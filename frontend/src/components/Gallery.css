@@ -1,168 +1,512 @@
-/* ─── Gallery ───────────────────────────────────────────────── */
-.gallery__filters {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
+/* ═══════════════════════════════════════════════
+   GALLERY — SRJ College
+   Full-width immersive carousel, dark navy theme
+═══════════════════════════════════════════════ */
 
-.gallery__filter-btn {
-  padding: 9px 24px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--border-light);
-  background: var(--white);
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  font-weight: 600;
-  font-family: var(--font-primary);
-  transition: var(--transition);
-  cursor: pointer;
-}
-[data-theme="dark"] .gallery__filter-btn {
-  background: var(--bg-card);
-  border-color: rgba(255,255,255,0.1);
-  color: var(--text-muted);
-}
-.gallery__filter-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-.gallery__filter-btn.active {
-  background: var(--grad-hero);
-  border-color: transparent;
-  color: var(--white);
-  box-shadow: 0 4px 14px rgba(31,42,109,0.25);
-}
-
-/* Grid */
-.gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.gallery__item {
-  position: relative;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  aspect-ratio: 1;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-}
-.gallery__item:nth-child(3n) { aspect-ratio: 1/1.2; }
-.gallery__item:nth-child(5n) { aspect-ratio: 1.2/1; }
-
-.gallery__placeholder {
+/* ── Section wrapper ── */
+.glry-section {
   width: 100%;
+  background: #f7f8fc;
+  padding: 80px 0 96px;
+  overflow: hidden;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+/* ── Header ── */
+.glry-header {
+  text-align: center;
+  padding: 0 20px 52px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.glry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a3a8f;
+  background: #e8edf9;
+  border: 1px solid #c5d0ef;
+  border-radius: 999px;
+  padding: 6px 16px 6px 12px;
+  margin-bottom: 20px;
+}
+.glry-pill svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.glry-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #0d1a4a;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+.glry-title em {
+  font-style: normal;
+  color: #1a3a8f;
+}
+
+.glry-sub {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 15.5px;
+  color: #5a6480;
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+
+.glry-rule {
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, #1a3a8f, #f0a800);
+  border-radius: 99px;
+  margin: 0 auto;
+}
+
+/* ── Carousel wrapper ── */
+.glry-carousel-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Progress bar */
+.glry-progress-track {
+  height: 3px;
+  background: #dde3f0;
+  border-radius: 99px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.glry-progress-fill {
   height: 100%;
+  border-radius: 99px;
+  transition: width 0.1s linear;
+}
+
+/* ── Main carousel row ── */
+.glry-carousel {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(10, 20, 70, 0.18),
+    0 4px 16px rgba(10, 20, 70, 0.08);
+  min-height: 420px;
+}
+
+/* ── Visual (left) ── */
+.glry-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+}
+
+.glry-slide-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s ease;
+}
+
+/* Rings */
+.glry-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+.glry-ring--a {
+  width: 380px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.glry-ring--b {
+  width: 540px;
+  height: 540px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.glry-ring--c {
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Dot-grid overlay */
+.glry-dots-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Glow */
+.glry-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Emoji stage */
+.glry-emoji-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glry-emoji-main {
+  font-size: clamp(7rem, 14vw, 11rem);
+  display: block;
+  filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.35));
+  user-select: none;
+  animation: glry-float 4s ease-in-out infinite;
+}
+
+@keyframes glry-float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Floating accent emojis */
+.glry-float-emoji {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  animation: glry-orbit 6s ease-in-out infinite;
+}
+.glry-float-emoji--0 {
+  top: -48px;
+  right: -40px;
+  animation-delay: 0s;
+  font-size: 1.7rem;
+}
+.glry-float-emoji--1 {
+  bottom: -32px;
+  left: -32px;
+  animation-delay: 1.2s;
+  font-size: 2.2rem;
+}
+.glry-float-emoji--2 {
+  top: 20px;
+  left: -56px;
+  animation-delay: 2.4s;
+  font-size: 1.5rem;
+}
+
+@keyframes glry-orbit {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(4px, -6px) scale(1.08); }
+  66%       { transform: translate(-4px, 4px) scale(0.94); }
+}
+
+/* Watermark */
+.glry-watermark {
+  position: absolute;
+  bottom: 18px;
+  left: 24px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.22);
+  user-select: none;
+}
+
+/* Slide number badge (top-right of visual) */
+.glry-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-family: "Segoe UI", monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 4px 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* Arrows */
+.glry-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+.glry-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.08);
+}
+.glry-arrow--prev { left: 16px; }
+.glry-arrow--next { right: 16px; }
+
+/* ── Info Panel (right) ── */
+.glry-panel {
+  position: relative;
+  background: #0e1a4e;
+  padding: 44px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.glry-panel-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+.glry-panel-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Icon box */
+.glry-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  backdrop-filter: blur(4px);
+  transition: background 0.4s, border-color 0.4s;
+}
+.glry-icon {
+  font-size: 1.65rem;
+}
+
+/* Category label */
+.glry-category {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  transition: color 0.4s;
+}
+
+/* Slide heading */
+.glry-heading {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+/* Accent rule */
+.glry-accent-rule {
+  width: 36px;
+  height: 3px;
+  border-radius: 99px;
+  margin-bottom: 18px;
+  transition: background 0.4s;
+}
+
+/* Body copy */
+.glry-body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14.5px;
+  color: rgba(200, 212, 240, 0.82);
+  line-height: 1.72;
+  margin: 0 0 32px;
+}
+
+/* Footer row */
+.glry-footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.glry-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-family: "Segoe UI", monospace, sans-serif;
+  font-weight: 700;
+}
+.glry-counter-curr {
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: color 0.4s;
+}
+.glry-counter-sep {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.1rem;
+}
+.glry-counter-total {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 1rem;
+}
+
+/* Dot indicators */
+.glry-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.glry-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+}
+.glry-dot--active {
+  width: 24px;
+  border-radius: 99px;
+  transform: none;
+}
+
+/* ── Thumbnail strip ── */
+.glry-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.glry-thumbs::-webkit-scrollbar { display: none; }
+
+.glry-thumb {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: var(--transition);
+  gap: 5px;
+  width: 90px;
+  min-height: 72px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  cursor: pointer;
+  padding: 10px 6px;
+  transition: transform 0.2s, box-shadow 0.25s, border-color 0.3s, opacity 0.2s;
+  opacity: 0.62;
 }
-.gallery__item:hover .gallery__placeholder {
-  transform: scale(1.05);
+.glry-thumb:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
 }
-.gallery__placeholder-emoji {
-  font-size: 3rem;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+.glry-thumb--active {
+  opacity: 1;
+  transform: translateY(-3px);
 }
-.gallery__placeholder-label {
-  color: rgba(255,255,255,0.8);
-  font-size: 0.75rem;
+.glry-thumb-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.glry-thumb-label {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 9.5px;
   font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  padding: 0 8px;
-}
-
-/* Overlay */
-.gallery__item-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(31,42,109,0.85) 0%, transparent 50%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 14px;
-  opacity: 0;
-  transition: var(--transition);
-}
-.gallery__item:hover .gallery__item-overlay { opacity: 1; }
-.gallery__item-alt {
-  color: var(--white);
-  font-size: 0.82rem;
-  font-weight: 600;
-  margin-top: 4px;
   line-height: 1.3;
 }
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(6px);
-}
-.lightbox__content {
-  position: relative;
-  max-width: 600px;
-  width: 100%;
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-[data-theme="dark"] .lightbox__content { background: var(--bg-card); }
-.lightbox__img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.lightbox__caption {
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.lightbox__caption h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--primary);
-  flex: 1;
-}
-.lightbox__close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.4);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-  cursor: pointer;
-}
-.lightbox__close:hover { background: var(--urgent); }
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
 
-/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .gallery__grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery__item:nth-child(n) { aspect-ratio: 1; }
+  .glry-carousel {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px auto;
+  }
+  .glry-visual {
+    min-height: 300px;
+  }
+  .glry-panel {
+    padding: 32px 28px;
+  }
+  .glry-emoji-main {
+    font-size: 6rem;
+  }
 }
-@media (max-width: 480px) {
-  .gallery__grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+@media (max-width: 600px) {
+  .glry-section {
+    padding: 56px 0 72px;
+  }
+  .glry-carousel-wrap {
+    padding: 0 12px;
+  }
+  .glry-carousel {
+    border-radius: 14px;
+    grid-template-rows: 240px auto;
+  }
+  .glry-visual {
+    min-height: 240px;
+  }
+  .glry-emoji-main {
+    font-size: 5rem;
+  }
+  .glry-panel {
+    padding: 24px 20px;
+  }
+  .glry-heading {
+    font-size: 1.2rem;
+  }
+  .glry-thumb {
+    width: 76px;
+    min-height: 62px;
+  }
+  .glry-arrow {
+    width: 36px;
+    height: 36px;
+  }
 }
