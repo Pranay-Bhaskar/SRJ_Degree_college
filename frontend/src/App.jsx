@@ -8,6 +8,7 @@ import AboutPage from "./pages/AboutPage";
 import CoursesPage from "./pages/CoursesPage";
 import ManagementPage from "./pages/ManagementPage";
 import AdmissionsPage from "./pages/AdmissionsPage";
+import FacilitiesPage from "./pages/FacilitiesPage";
 
 import "./styles/global.css";
 
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/management" element={<ManagementPage />} />
           <Route path="/admissions" element={<AdmissionsPage />} />
+          <Route path="/facilities" element={<FacilitiesPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
