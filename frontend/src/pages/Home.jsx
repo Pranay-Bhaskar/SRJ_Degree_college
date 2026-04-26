@@ -36,7 +36,7 @@ export default function Home() {
         <Admissions />
         <News />*/}
         <Gallery />
-        {/* <Placements />*/}
+        <Placements />
         <Contact />
       </main>
     </>

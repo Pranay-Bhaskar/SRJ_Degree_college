@@ -22,7 +22,7 @@ export const collegeInfo = {
   },
   vision: "To be a premier institution that transforms rural youth into confident, skilled, and ethically grounded citizens who drive social and economic progress.",
   mission: "To provide high-quality, affordable education with strong academic rigour, practical skill development, and rural-centric values that foster lifelong learning.",
-  about: `Established in 2005, Dr. SRJ Degree College is a government-aided institution located at the heart of Atmakur, Nellore, committed to bridging the educational gap between urban and rural India. Affiliated to Vikrama Simhapuri University, the college provides a nurturing environment with experienced faculty, modern infrastructure, and hands-on practical training. With a legacy of empowering first-generation rural learners, SRJ stands as a beacon of hope, possibility, and excellence in the Nellore region.`,
+  //about: `Established in 2005, Dr. SRJ Degree College is a government-aided institution located at the heart of Atmakur, Nellore, committed to bridging the educational gap between urban and rural India. Affiliated to Vikrama Simhapuri University, the college provides a nurturing environment with experienced faculty, modern infrastructure, and hands-on practical training. With a legacy of empowering first-generation rural learners, SRJ stands as a beacon of hope, possibility, and excellence in the Nellore region.`,
 };
 
 export const courses = [
