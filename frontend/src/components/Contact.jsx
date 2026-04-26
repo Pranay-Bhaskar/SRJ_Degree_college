@@ -33,7 +33,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import {
   FiMapPin, FiPhone, FiMail, FiClock,
   FiExternalLink, FiSend, FiLock,
