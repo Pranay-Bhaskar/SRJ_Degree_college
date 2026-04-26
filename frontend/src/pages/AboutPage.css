@@ -1,3 +1,4 @@
+/*
 .about-page {
   background-color: #ffffff;
   color: #1f2937;
@@ -134,7 +135,7 @@
   padding-top: 18px;
 }
 
-/* Anchor scroll fix for sticky navbar */
+/* Anchor scroll fix for sticky navbar *
 #about-college,
 #principal-message,
 #director-message,
@@ -142,7 +143,7 @@
   scroll-margin-top: 16px;
 }
 
-/* Tablet */
+/* Tablet *
 @media (max-width: 992px) {
   .about-section__split,
   .message-block,
@@ -168,7 +169,7 @@
   }
 }
 
-/* Mobile */
+/* Mobile *
 @media (max-width: 576px) {
   .about-hero {
     padding: 56px 0 48px;
@@ -195,5 +196,256 @@
   #director-message,
   #vision-mission {
     scroll-margin-top: 0px;
+  }
+}
+
+*/
+
+
+
+
+
+
+
+.about-page {
+  background: #ffffff;
+  color: #1e293b;
+}
+
+.about-container {
+  width: min(1140px, 92%);
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0f5fa8;
+}
+
+.about-hero {
+  padding: 90px 0 80px;
+  background: linear-gradient(135deg, #0d3b78 0%, #1661b0 100%);
+  overflow: hidden;
+}
+
+.about-hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about-hero__content h1 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.08;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.about-hero__text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #e8f1fb;
+  max-width: 620px;
+}
+
+.about-hero__media {
+  position: relative;
+}
+
+.about-hero__shape {
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #7fc4ff, #b8deff);
+  border-radius: 28px;
+}
+
+.about-hero__media img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.16);
+}
+
+.about-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.hero-stat {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 18px 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.hero-stat h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.hero-stat span {
+  font-size: 0.9rem;
+  color: #dbeafe;
+}
+
+.about-section {
+  padding: 88px 0;
+}
+
+.about-section--soft {
+  background: #f8fbff;
+}
+
+.content-panel,
+.message-section__content {
+  background: #ffffff;
+  border: 1px solid #dbe7f4;
+  border-radius: 28px;
+  padding: 38px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.content-panel h2,
+.message-section__content h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  line-height: 1.2;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+.content-panel p,
+.message-section__content p {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.content-quote {
+  margin-top: 24px;
+  padding-left: 18px;
+  border-left: 4px solid #0f5fa8;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.message-section {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 42px;
+  align-items: start;
+}
+
+.message-section--reverse {
+  grid-template-columns: 1fr 360px;
+}
+
+.message-section--reverse .message-section__media {
+  order: 2;
+}
+
+.message-section--reverse .message-section__content {
+  order: 1;
+}
+
+.message-section__media {
+  position: relative;
+}
+
+.message-section__shape {
+  position: absolute;
+  left: -14px;
+  bottom: -14px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f5fa8, #8cc9ff);
+  border-radius: 28px;
+}
+
+.message-section__media img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 20px 46px rgba(15, 23, 42, 0.14);
+}
+
+.message-role {
+  font-weight: 600;
+  color: #0f5fa8;
+  margin-bottom: 16px;
+}
+
+#about-college,
+#principal-message,
+#directors-message {
+  scroll-margin-top: 110px;
+}
+
+@media (max-width: 992px) {
+  .about-hero__grid,
+  .message-section,
+  .message-section--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .message-section--reverse .message-section__media,
+  .message-section--reverse .message-section__content {
+    order: unset;
+  }
+
+  .about-hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero__media img,
+  .message-section__media img {
+    height: auto;
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero {
+    padding: 72px 0 64px;
+  }
+
+  .about-section {
+    padding: 64px 0;
+  }
+
+  .content-panel,
+  .message-section__content {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .about-hero__media img,
+  .message-section__media img,
+  .about-hero__shape,
+  .message-section__shape {
+    border-radius: 20px;
   }
 }
