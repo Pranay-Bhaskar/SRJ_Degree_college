@@ -236,35 +236,27 @@ export default function AboutPage() {
   return (
     <main className="about-page">
       <section className="about-hero">
-        <div className="about-container about-hero__grid">
-          <div className="about-hero__content">
-            <p className="section-tag">About Us</p>
-            <h1>Empowering Rural Education with Excellence and Opportunity</h1>
-            <p className="about-hero__text">
-              Dr. S.R.J. Degree College, Atmakur, has been shaping futures since
-              1983 through quality education, discipline, leadership, and
-              student-centered learning.
-            </p>
-
-            <div className="about-hero__stats">
-              <div className="hero-stat">
-                <h3>1983</h3>
-                <span>Established</span>
-              </div>
-              <div className="hero-stat">
-                <h3>17+</h3>
-                <span>Programs</span>
-              </div>
-              <div className="hero-stat">
-                <h3>VSU</h3>
-                <span>Affiliated</span>
-              </div>
+        <div className="about-container">
+          <div className="about-hero__grid">
+            <div className="about-hero__content">
+         {/*     <p className="section-tag">About Us</p>*/}
+              <h1 className="about-hero__title">
+                About <span>Dr. S R J Degree College</span>
+              </h1>
+              <p className="about-hero__text">
+                Dr. SRJ Degree College stands as a center of academic learning,
+                discipline, and value-based education for students in and around
+                Atmakur, Nellore.
+              </p>
             </div>
-          </div>
 
-          <div className="about-hero__media">
-            <div className="about-hero__shape"></div>
-            <img src="/images/college.jpg" alt="Dr. SRJ Degree College campus" />
+            <div className="about-hero__media">
+              <img
+                src="/images/college.jpg"
+                alt="Dr. S R J Degree College campus"
+                className="about-hero__image"
+              />
+            </div>
           </div>
         </div>
       </section>

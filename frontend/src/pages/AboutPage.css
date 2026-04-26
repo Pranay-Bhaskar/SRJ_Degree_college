@@ -227,85 +227,64 @@
   color: #0f5fa8;
 }
 
+/* Updated hero only */
 .about-hero {
-  padding: 90px 0 80px;
-  background: linear-gradient(135deg, #0d3b78 0%, #1661b0 100%);
+  padding: 52px 0 24px;
+  background: #ffffff;
   overflow: hidden;
 }
 
 .about-hero__grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 0.9fr 1.2fr;
   gap: 48px;
   align-items: center;
 }
 
+.about-hero__content {
+  transform: translateY(-75px);
+}
+
 .about-hero__content h1 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
+  margin: 18px 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
   line-height: 1.08;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 18px;
+  color: #162b59;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.about-hero__content h1 span {
+  color: #c8a13a;
+}
+
+.about-hero__content {
+  transform: translateY(17px);
 }
 
 .about-hero__text {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  color: #e8f1fb;
-  max-width: 620px;
+  max-width: 420px;
+  color: #69758e;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.75;
+  margin-bottom: 32px;
 }
 
 .about-hero__media {
-  position: relative;
-}
-
-.about-hero__shape {
-  position: absolute;
-  right: -18px;
-  bottom: -18px;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #7fc4ff, #b8deff);
-  border-radius: 28px;
 }
 
 .about-hero__media img {
-  position: relative;
-  z-index: 2;
   width: 100%;
-  height: 480px;
+  height: 420px;
   object-fit: cover;
   border-radius: 28px;
-  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.16);
+  display: block;
+  box-shadow: 0 18px 40px rgba(22, 43, 89, 0.12);
 }
 
-.about-hero__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.hero-stat {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 18px;
-  padding: 18px 16px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-.hero-stat h3 {
-  font-size: 1.4rem;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.hero-stat span {
-  font-size: 0.9rem;
-  color: #dbeafe;
-}
-
+/* Existing sections kept */
 .about-section {
   padding: 88px 0;
 }
@@ -411,13 +390,17 @@
     grid-template-columns: 1fr;
   }
 
+  .about-hero__content {
+    transform: translateY(0);
+  }
+
   .message-section--reverse .message-section__media,
   .message-section--reverse .message-section__content {
     order: unset;
   }
 
-  .about-hero__stats {
-    grid-template-columns: 1fr;
+  .about-hero__text {
+    max-width: 100%;
   }
 
   .about-hero__media img,
@@ -429,7 +412,7 @@
 
 @media (max-width: 576px) {
   .about-hero {
-    padding: 72px 0 64px;
+    padding: 40px 0 12px;
   }
 
   .about-section {
@@ -444,8 +427,11 @@
 
   .about-hero__media img,
   .message-section__media img,
-  .about-hero__shape,
   .message-section__shape {
     border-radius: 20px;
+  }
+
+  .about-hero__content h1 {
+    font-size: 2rem;
   }
 }
