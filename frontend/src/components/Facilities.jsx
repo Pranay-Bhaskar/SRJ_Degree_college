@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { facilities } from "../data/mockData";
+//import { facilities } from "../data/mockData";
 import "./Facilities.css";
 
 const tagColors = {
