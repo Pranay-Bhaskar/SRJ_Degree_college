@@ -81,7 +81,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <span className="h1__top">Government College</span>
+         {/*   <span className="h1__top">Government College</span>  */}
             <span className="h1__main">SRJ Degree College</span>
           </motion.h1>
 
