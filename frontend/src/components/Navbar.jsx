@@ -417,7 +417,7 @@ const navLinks = [
       { label: "About Us", path: "/about#about-college" },
       { label: "Principal's Message", path: "/about#principal-message" },
       { label: "Director's Message", path: "/about#director-message" },
-      { label: "Vision and Mission", path: "/about#vision-mission" },
+    {/*  { label: "Vision and Mission", path: "/about#vision-mission" }, */}
     ],
   },
   {
