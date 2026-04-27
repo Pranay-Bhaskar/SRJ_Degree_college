@@ -46,22 +46,10 @@
 /* Brand */
 .footer__logo {
   display: flex;
-  align-items: center;
+  align-items: center; /* Aligns logo vertically with the text block */
+  gap: 20px;           /* Space between logo and text */
+  margin-bottom: 1.5rem;
 }
-/* .footer__logo-icon {
-  width: 44px;
-  height: 44px;
-  background: var(--grad-accent);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 0.9rem;
-  color: var(--primary);
-  font-family: var(--font-primary);
-  flex-shrink: 0;
-} */
 .footer__logo span {
   color: var(--white);
   font-family: var(--font-primary);
@@ -69,18 +57,29 @@
   font-size: 1rem;
 }
 .footer__tagline {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.6;
-  margin-bottom: 20px;
+  color: #F2F0EF;    /* Set to pure white */
+  opacity: 1;        /* Ensure no transparency is making it look grey */
+  font-size: 0.95rem;
+  margin-top: 4px;
+  max-width: 300px;    /* Prevents tagline from stretching too wide */
 }
 .footer__logo-img {
-  height: 40px; /* Adjust based on your preference */
+  height: 100px; 
   width: auto;
-  margin-right: 12px;
   object-fit: contain;
 }
 
+.footer__logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer__college-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
 .footer__contact-mini {
   display: flex;
   flex-direction: column;
@@ -152,10 +151,10 @@
   line-height: 1.7;
 }
 .footer__link-inline {
-  color: var(--accent-light);
+  color: #F2F0EF;
   font-weight: 500;
 }
-.footer__link-inline:hover { text-decoration: underline; }
+.footer__link-inline:hover { text-decoration: underline }
 
 .footer__affiliation-badge {
   display: flex;
