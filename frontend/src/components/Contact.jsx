@@ -168,10 +168,10 @@ export default function Contact() {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <div className="contact__pill">
+        {/*   <div className="contact__pill">
             <HiOutlineEnvelope size={13}/>
-            <span>GET IN TOUCH</span>
-          </div>
+           <span>GET IN TOUCH</span>   
+          </div>   */}
           <h2 className="contact__h2">Contact Us</h2>
           <div className="contact__h2-rule"/>
           <p className="contact__subhead">
