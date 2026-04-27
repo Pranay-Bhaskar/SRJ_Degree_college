@@ -127,7 +127,7 @@ export default function About() {
             {/* "ABOUT US" tag */}
             <div className="about__tag">
               <span className="tag__dot" />
-              <span className="tag__text">ABOUT US</span>
+           {/*   <span className="tag__text">ABOUT US</span>*/}
             </div>
 
             {/* Heading */}
