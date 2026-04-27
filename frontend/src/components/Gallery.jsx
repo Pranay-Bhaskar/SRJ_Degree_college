@@ -199,7 +199,7 @@ export default function Gallery() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65 }}
       >
-        <div className="glry-pill">
+      {/*  <div className="glry-pill">
           <svg
             width="16"
             height="16"
@@ -214,9 +214,9 @@ export default function Gallery() {
             <circle cx="12" cy="13" r="4" />
           </svg>
           Photo Gallery
-        </div>
+        </div> */}
         <h2 className="glry-title">
-          Life at <em>SRJ</em>
+          Life at <em>Dr. S R J</em>
         </h2>
         <p className="glry-sub">
           Snapshots of learning, growth, and togetherness that define the SRJ
