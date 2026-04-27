@@ -25,7 +25,7 @@ export default function Placements() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <span className="section-tag">Career & Placements</span>
+        {/*  <span className="section-tag">Career & Placements</span>  */}
           <h2 className="section-title">
             Your Career <span>Starts Here</span>
           </h2>
