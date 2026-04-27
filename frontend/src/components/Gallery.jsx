@@ -199,7 +199,7 @@ export default function Gallery() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.65 }}
       >
-      {/*  <div className="glry-pill">
+        <div className="glry-pill">
           <svg
             width="16"
             height="16"
