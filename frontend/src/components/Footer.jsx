@@ -186,13 +186,13 @@ export default function Footer() {
               className="footer__col-text"
               style={{ marginTop: "10px" }}
             >
-              Government-aided institution committed to quality rural education
+              Private-aided institution committed to quality rural education
               since {collegeInfo.established}.
             </p>
 
             <div className="footer__affiliation-badge">
               <span>🏛️ VSU Affiliated</span>
-              <span>🇮🇳 Govt. Aided</span>
+              <span>Private Aided</span>
             </div>
           </div>
         </div>
