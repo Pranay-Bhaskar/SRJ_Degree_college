@@ -47,10 +47,8 @@
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
 }
-.footer__logo-icon {
+/* .footer__logo-icon {
   width: 44px;
   height: 44px;
   background: var(--grad-accent);
@@ -63,7 +61,7 @@
   color: var(--primary);
   font-family: var(--font-primary);
   flex-shrink: 0;
-}
+} */
 .footer__logo span {
   color: var(--white);
   font-family: var(--font-primary);
@@ -75,6 +73,12 @@
   color: rgba(255,255,255,0.55);
   line-height: 1.6;
   margin-bottom: 20px;
+}
+.footer__logo-img {
+  height: 40px; /* Adjust based on your preference */
+  width: auto;
+  margin-right: 12px;
+  object-fit: contain;
 }
 
 .footer__contact-mini {

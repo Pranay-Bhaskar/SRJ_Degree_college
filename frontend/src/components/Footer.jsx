@@ -62,8 +62,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-icon">SRJ</div>
-              <span>Dr. SRJ Degree College</span>
+              <img 
+      src="/SRJ-removebg.png" 
+      alt="SRJ College Logo" 
+      className="footer__logo-img" 
+      style={{ height: '40px', width: 'auto', marginRight: '10px' }} 
+    />
+    <div className="footer__logo-icon"></div>
+    <span>Dr. SRJ Degree College</span>
             </div>
 
             <p className="footer__tagline">{collegeInfo.tagline}</p>
