@@ -29,21 +29,21 @@ function Counter({ to, suffix = "" }) {
 }
 
 const stats = [
-  { icon: HiAcademicCap,     value: "50",   suffix: "+", label: "Years of Legacy",  sub: "Excellence in Education" },
-  { icon: HiUserGroup,       value: "5000", suffix: "+", label: "Students",          sub: "Empowered Minds" },
-  { icon: HiBookOpen,        value: "25",   suffix: "+", label: "Courses",           sub: "Across Disciplines" },
-  { icon: HiBuildingLibrary, value: "30",   suffix: "+", label: "Dedicated Faculty", sub: "Guiding Futures" },
+  { icon: HiAcademicCap, value: "40", suffix: "+", label: "Years of Legacy", sub: "Excellence in Education" },
+  { icon: HiUserGroup, value: "5000", suffix: "+", label: "Students", sub: "Empowered Minds" },
+  { icon: HiBookOpen, value: "25", suffix: "+", label: "Courses", sub: "Across Disciplines" },
+  { icon: HiBuildingLibrary, value: "30", suffix: "+", label: "Dedicated Faculty", sub: "Guiding Futures" },
 ];
 
 const values = [
-  { icon: HiShieldCheck,     label: "Quality",    sub: "Education" },
-  { icon: HiStar,            label: "Holistic",   sub: "Development" },
-  { icon: HiUserGroup,       label: "Community",  sub: "Engagement" },
-  { icon: HiGlobeAlt,        label: "Excellence", sub: "Always" },
+  { icon: HiShieldCheck, label: "Quality", sub: "Education" },
+  { icon: HiStar, label: "Holistic", sub: "Development" },
+  { icon: HiUserGroup, label: "Community", sub: "Engagement" },
+  { icon: HiGlobeAlt, label: "Excellence", sub: "Always" },
 ];
 
 const fadeUp = (delay = 0) => ({
-  hidden:  { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] } },
 });
 
@@ -166,12 +166,37 @@ export default function Hero() {
       </motion.div>
 
       {/* ══ DARK FOOTER STRIP ════════════════════════════ */}
+
       <motion.div
         className="hero__footer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.65, delay: 0.9 }}
+        style={{ position: 'relative', overflow: 'visible' }}
       >
+        {/* Wave SVG at the top of the footer */}
+        <div className="footer__wave">
+          <svg
+            viewBox="0 0 1440 80"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            style={{ display: 'block', width: '100%', height: '80px' }}
+          >
+            <path
+              d="M0,80 L0,40 Q200,0 400,30 Q650,65 900,20 Q1150,-20 1440,30 L1440,80 Z"
+              fill="var(--navy)"
+            />
+
+            <path
+              d="M0,40 Q200,0 400,30 Q650,65 900,20 Q1150,-20 1440,30"
+              fill="none"
+              stroke="var(--gold)"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
+
         <div className="footer__quote">
           <span className="footer__qmark">"</span>
           <div>
@@ -201,7 +226,7 @@ function CollegeIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+      <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />
     </svg>
   );
 }
