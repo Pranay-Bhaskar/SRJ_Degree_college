@@ -31,7 +31,7 @@ function Counter({ to, suffix = "" }) {
 const stats = [
   { icon: HiAcademicCap, value: "40", suffix: "+", label: "Years of Legacy", sub: "Excellence in Education" },
   { icon: HiUserGroup, value: "5000", suffix: "+", label: "Students", sub: "Empowered Minds" },
-  { icon: HiBookOpen, value: "25", suffix: "+", label: "Courses", sub: "Across Disciplines" },
+  { icon: HiBookOpen, value: "15", suffix: "+", label: "Courses", sub: "Across Disciplines" },
   { icon: HiBuildingLibrary, value: "30", suffix: "+", label: "Dedicated Faculty", sub: "Guiding Futures" },
 ];
 
@@ -82,7 +82,7 @@ export default function Hero() {
             animate="visible"
           >
          {/*   <span className="h1__top">Government College</span>  */}
-            <span className="h1__main">Dr. S R J Degree College</span>
+            <span className="h1__main">Dr. S R J DEGREE COLLEGE</span>
           </motion.h1>
 
           {/* Gold rule */}
