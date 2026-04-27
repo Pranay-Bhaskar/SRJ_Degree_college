@@ -13,15 +13,15 @@ import "./About.css";
 
 /* ── Data ─────────────────────────────────────────────── */
 const statCards = [
-  { icon: <HiOutlineCalendarDays size={26} />, value: "2005",           sub: "Established" },
-  { icon: <HiOutlineBuildingLibrary size={26} />, value: "VSU",         sub: "Affiliated To" },
+  { icon: <HiOutlineCalendarDays size={26} />, value: "1983",           sub: "Established" },
+  { icon: <HiOutlineBuildingLibrary size={26} />, value: "V S U",         sub: "Affiliated To" },
   { icon: <HiOutlineMapPin size={26} />,       value: "Atmakur, Nellore", sub: "Location" },
-  { icon: <HiOutlineBookOpen size={26} />,     value: "5+",
+  { icon: <HiOutlineBookOpen size={26} />,     value: "15+",
     valueExtra: "Courses",                     sub: "Programs" },
 ];
 
 const features = [
-  { icon: <HiOutlineShieldCheck size={24} />, title: "Government",   titleB: "Aided",    sub: "Recognized Programs" },
+  { icon: <HiOutlineShieldCheck size={24} />, title: "Private",   titleB: "Aided",    sub: "Recognized Programs" },
   { icon: <HiOutlineUserGroup   size={24} />, title: "Experienced",  titleB: "Faculty",  sub: "Research & Practice Driven" },
   { icon: <HiOutlineMapPin      size={24} />, title: "Rural",        titleB: "Focus",    sub: "Empowering First-Generation Learners" },
   { icon: <HiOutlineTrophy      size={24} />, title: "Excellence",   titleB: "Always",   sub: "40+ Years of Trust & Impact" },
