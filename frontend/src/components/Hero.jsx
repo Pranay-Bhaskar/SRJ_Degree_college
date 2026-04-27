@@ -82,7 +82,7 @@ export default function Hero() {
             animate="visible"
           >
          {/*   <span className="h1__top">Government College</span>  */}
-            <span className="h1__main">SRJ Degree College</span>
+            <span className="h1__main">Dr. S R J Degree College</span>
           </motion.h1>
 
           {/* Gold rule */}
