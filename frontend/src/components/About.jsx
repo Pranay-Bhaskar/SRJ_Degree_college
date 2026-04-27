@@ -124,11 +124,11 @@ export default function About() {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            {/* "ABOUT US" tag */}
+            {/* "ABOUT US" tag *
             <div className="about__tag">
               <span className="tag__dot" />
-           {/*   <span className="tag__text">ABOUT US</span>*/}
-            </div>
+              <span className="tag__text">ABOUT US</span>
+            </div>*/}
 
             {/* Heading */}
             <h2 className="about__heading">
