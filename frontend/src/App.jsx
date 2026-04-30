@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+      <ScrollToTop/>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
