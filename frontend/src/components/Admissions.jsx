@@ -23,7 +23,7 @@ export default function Admissions() {
             Simple <span>Admission</span> Process
           </h2>
           <p className="section-subtitle">
-            We've made applying straightforward. Follow these six steps to secure your seat at Dr. SRJ Degree College.
+            We've made applying straightforward. Follow these six steps to secure your seat at Dr. S R J Degree College.
           </p>
           <div className="section-divider" />
         </motion.div>
