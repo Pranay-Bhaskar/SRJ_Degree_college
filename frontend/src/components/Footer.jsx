@@ -143,7 +143,7 @@ export default function Footer() {
                 { label: "Courses", id: "courses" },
                 { label: "Admissions", id: "admissions" },
                 { label: "Facilities", id: "facilities" },
-                { label: "Gallery", id: "gallery" },
+                // { label: "Gallery", id: "gallery" },
                 { label: "Contact", id: "contact" },
               ].map((l) => (
                 <li key={l.label}>
