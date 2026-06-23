@@ -145,7 +145,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ══ STATS CARD ═══════════════════════════════════ */}
+      {/* ══ STATS CARD ═══════════════════════════════════ 
       <motion.div
         className="hero__stats"
         initial={{ opacity: 0, y: 24 }}
@@ -163,7 +163,7 @@ export default function Hero() {
             {i < stats.length - 1 && <div className="stat__sep" />}
           </div>
         ))}
-      </motion.div>
+      </motion.div>  */}
 
       {/* ══ DARK FOOTER STRIP ════════════════════════════ */}
 
