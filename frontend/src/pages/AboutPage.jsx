@@ -252,7 +252,7 @@ export default function AboutPage() {
 
             <div className="about-hero__media">
               <img
-                src="/images/college.jpg"
+                src="/images/college2.png"
                 alt="Dr. S R J Degree College campus"
                 className="about-hero__image"
               />
