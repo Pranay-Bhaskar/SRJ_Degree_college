@@ -145,7 +145,7 @@ export default function Footer() {
                 { label: "Courses", path: "/courses" },
                 { label: "Admissions", path: "/admissions" },
                 { label: "Facilities", path: "/facilities" },
-                { label: "Contact", path: "/contact" },
+                /*{ label: "Contact", path: "/contact" },*/
               ].map((l) => (
                 <li key={l.label}>
                   <Link
