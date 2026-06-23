@@ -11,6 +11,7 @@ import {
   HiGlobeAlt,
 } from "react-icons/hi2";
 import "./Hero.css";
+import { Link } from 'react-router-dom';
 
 /* ── Animated Counter ────────────────────────────────── */
 function Counter({ to, suffix = "" }) {
@@ -112,13 +113,16 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <button
+            {/* Replaced button with Link for page routing */}
+            <Link 
+              to="/courses" 
               className="btn btn--primary"
-              onClick={() => handleScroll("courses")}
             >
               <FiArrowRight strokeWidth={2.5} />
               Explore Courses
-            </button>
+            </Link>
+
+            {/* Kept this one as a button if 'About' is still on the same page */}
             <button
               className="btn btn--outline"
               onClick={() => handleScroll("about")}
