@@ -296,6 +296,43 @@
 .content-panel,
 .message-section__content {
   background: #ffffff;
+  padding: 0;
+}
+
+.content-panel h2,
+.message-section__content h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  line-height: 1.2;
+  font-weight: 700; /* Dropped from 800 to 700 for a more refined, less bulky look */
+  color: #162b59; /* Deep academic navy blue */
+  margin-bottom: 24px;
+  position: relative;
+  padding-bottom: 14px; /* Space for the underline */
+}
+
+/* Elegant gold underline accent */
+.content-panel h2::after,
+.message-section__content h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px; /* Short, deliberate line */
+  height: 3px;
+  background: #c8a13a; /* Gold/bronze accent color */
+}
+
+.content-panel p,
+.message-section__content p {
+  font-size: 1.05rem; /* Slightly larger for better readability */
+  line-height: 1.8;
+  color: #334155; /* Softer, highly readable dark slate */
+  margin-bottom: 20px;
+}
+/*
+.content-panel,
+.message-section__content {
+  background: #ffffff;
   border: 1px solid #dbe7f4;
   border-radius: 28px;
   padding: 38px;
@@ -318,6 +355,8 @@
   color: #475569;
   margin-bottom: 16px;
 }
+*/
+
 
 .content-quote {
   margin-top: 24px;
@@ -351,6 +390,7 @@
   position: relative;
 }
 
+/*
 .message-section__shape {
   position: absolute;
   left: -14px;
@@ -360,6 +400,7 @@
   background: linear-gradient(135deg, #0f5fa8, #8cc9ff);
   border-radius: 28px;
 }
+  */
 
 .message-section__media img {
   position: relative;
