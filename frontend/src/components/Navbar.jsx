@@ -447,8 +447,8 @@ const navLinks = [
   { label: "Admissions", path: "/admissions" },
   { label: "Management", path: "/management" },
   { label: "Facilities", path: "/facilities" },
-  { label: "Gallery", path: "/#gallery" },
-  { label: "Placements", path: "/#placements" },
+  // { label: "Gallery", path: "/#gallery" },
+  // { label: "Placements", path: "/#placements" },
   { label: "Contact", path: "/#contact" },
 ];
 
