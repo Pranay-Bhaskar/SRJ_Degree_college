@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import { collegeInfo, courses } from "../data/mockData";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -133,7 +134,32 @@ export default function Footer() {
             </div>*/}
           </div> 
 
+
           {/* Quick Links */}
+          <div className="footer__col">
+            <h4 className="footer__col-title">Quick Links</h4>
+            <ul className="footer__links">
+              {[
+                { label: "Home", path: "/" },
+                { label: "About Us", path: "/about" },
+                { label: "Courses", path: "/courses" },
+                { label: "Admissions", path: "/admissions" },
+                { label: "Facilities", path: "/facilities" },
+                { label: "Contact", path: "/contact" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <Link
+                    to={l.path}
+                    className="footer__link"
+                  >
+                    → {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quick Links 
           <div className="footer__col">
             <h4 className="footer__col-title">Quick Links</h4>
             <ul className="footer__links">
@@ -156,7 +182,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Courses */}
           <div className="footer__col">
@@ -164,12 +190,13 @@ export default function Footer() {
             <ul className="footer__links">
               {courses.map((c) => (
                 <li key={c.id}>
-                  <button
+                  {/* Replaced button with Link to route to the courses page */}
+                  <Link
+                    to="/courses"
                     className="footer__link"
-                    onClick={() => scroll("courses")}
                   >
                     → {c.name}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
