@@ -54,10 +54,10 @@ const processSteps = [
 ];
 
 const importantInfo = [
-  ["Academic Session", "2025 - 2026"],
-  ["Application Start Date", "01 May 2025"],
-  ["Last Date to Apply", "30 June 2025"],
-  ["Classes Commence", "01 July 2025"],
+  ["Academic Session", "2026 - 2027"],
+  ["Application Start Date", "01 May 2026"],
+  ["Last Date to Apply", "30 Jul 2026"],
+  ["Classes Commence", "01 Aug 2026"],
   ["Mode of Application", "Online / Offline"],
   ["Application Fee", "Free of Cost"],
 ];
