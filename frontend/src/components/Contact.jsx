@@ -58,11 +58,11 @@ const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const INFO_ROWS = [
   {
     icon:  <FiMapPin size={17} />, variant: "navy", label: "Address",
-    value: <>Dr. SRJ Degree College, Atmakur,<br/>Nellore Palem, Andhra Pradesh 524322</>,
+    value: <>Dr. S R J Degree College, Atmakur,<br/>Nellore Palem, Andhra Pradesh 524322</>,
   },
   {
     icon:  <FiPhone size={17} />, variant: "gold", label: "Phone",
-    value: <><a href="tel:+919876543210">+91 98765 43210</a><br/><a href="tel:+918765432109">+91 87654 32109</a></>,
+    value: <><a href="tel:+919550080152">+91 95500 80152</a><br/><a href="tel:+917680903077">+91 76809 03077</a></>,
   },
   {
     icon:  <FiMail size={17} />, variant: "navy", label: "Email",
