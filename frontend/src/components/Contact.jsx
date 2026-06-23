@@ -58,7 +58,7 @@ const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const INFO_ROWS = [
   {
     icon:  <FiMapPin size={17} />, variant: "navy", label: "Address",
-    value: <>Dr. S R J Degree College, Atmakur,<br/>Nellore Palem, Andhra Pradesh 524322</>,
+    value: <>Dr. S R J Degree College, Atmakur,<br/>Nellore Palem, Andhra Pradesh - 524322</>,
   },
   {
     icon:  <FiPhone size={17} />, variant: "gold", label: "Phone",
