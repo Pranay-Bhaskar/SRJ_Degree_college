@@ -100,7 +100,7 @@ export default function Footer() {
               </span>
             </div>
 
-            <div className="footer__socials">
+            {/* <div className="footer__socials">
               <a
                 href={collegeInfo.socialLinks.facebook}
                 target="_blank"
@@ -131,7 +131,7 @@ export default function Footer() {
                 <FiYoutube />
               </a>
             </div>
-          </div>
+          </div> */}
 
           {/* Quick Links */}
           <div className="footer__col">
