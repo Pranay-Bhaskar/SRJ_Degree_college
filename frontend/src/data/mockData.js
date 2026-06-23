@@ -11,7 +11,7 @@ export const collegeInfo = {
   location: "Atmakur, Nellore, Andhra Pradesh — 524 322",
   phone: ["+91 95500 80152", "+91 76809 03077",],
   email: "srjdcollege@yahoo.com",
-  address: "Dr. SRJ Degree College, Atmakur, Nellore Palem, Andhra Pradesh 524322",
+  address: "Dr. SRJ Degree College, Atmakur, Nellore Palem, Andhra Pradesh - 524322",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dr.%20SRJ%20Degree%20College%20Dr.S.R.j.Degree%20College%2C%20Atmakur%2C%20Nellore%20Palem%2C%20Andhra%20Pradesh%20524322%2C%20India",
   mapsEmbed: "https://maps.google.com/maps?q=Dr.%20SRJ%20Degree%20College%2C%20Atmakur%2C%20Nellore%2C%20Andhra%20Pradesh&t=&z=15&ie=UTF8&iwloc=&output=embed",
   socialLinks: {
