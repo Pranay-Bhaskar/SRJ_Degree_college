@@ -135,7 +135,7 @@ export default function AdmissionsPage() {
             <div className="ad-hero__visual">
               <div className="ad-hero__imageWrap">
                 <img
-                  src="/images/campus.jpg"
+                  src="/images/campus1.jpg"
                   alt="Dr. S R J Degree College building"
                   className="ad-hero__image"
                 />
