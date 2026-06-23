@@ -346,7 +346,7 @@ export default function AboutPage() {
           <div className="message-section">
             <div className="message-section__media">
               <div className="message-section__shape"></div>
-              <img src="/images/principal.jpg" alt="Smt. G. Varakumari" />
+              <img src="/images/principal.PNG" alt="Smt. G. Varakumari" />
             </div>
 
             <div className="message-section__content">

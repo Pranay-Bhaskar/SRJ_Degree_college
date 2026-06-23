@@ -447,35 +447,40 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between the two images */
+  gap: 24px; /* Space between the two images */
 }
 
-/* Overriding the default 460px height so the dual images don't stretch the layout too far */
+/* Allow images to scale naturally without cropping */
 .message-section__media .directors-wrapper img {
-  height: 240px; 
+  width: 100%;
+  height: auto; /* Overrides any fixed height to show the full image */
+  object-fit: contain; /* Ensures the image is never cut off */
+  border-radius: 28px; /* Keeps your original rounded corners */
 }
 
-/* Tablet: When the layout breaks into 1 column, place the images side-by-side */
+/* Tablet: Place the full images side-by-side */
 @media (max-width: 992px) {
   .directors-wrapper {
     flex-direction: row; 
     gap: 24px;
+    align-items: flex-start; /* Aligns them nicely at the top */
   }
   
   .message-section__media .directors-wrapper img {
-    height: 320px; /* Slightly taller when they have the full width of the screen */
+    width: calc(50% - 12px); /* Splits the width exactly in half, accounting for the gap */
+    height: auto; 
   }
 }
 
-/* Mobile: Stack them vertically again for small screens */
+/* Mobile: Stack them vertically again */
 @media (max-width: 576px) {
   .directors-wrapper {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
 
   .message-section__media .directors-wrapper img {
+    width: 100%;
     height: auto;
-    min-height: 260px;
   }
 }
