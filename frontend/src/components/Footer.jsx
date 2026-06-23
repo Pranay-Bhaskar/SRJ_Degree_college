@@ -130,8 +130,8 @@ export default function Footer() {
               >
                 <FiYoutube />
               </a>
-            </div>
-          </div> */}
+            </div>*/}
+          </div> 
 
           {/* Quick Links */}
           <div className="footer__col">
