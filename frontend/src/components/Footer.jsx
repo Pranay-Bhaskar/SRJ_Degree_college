@@ -211,7 +211,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="footer__bottom-inner">
           <span>© {year} Dr. SRJ Degree College, Atmakur. All rights reserved.</span>
-          <span>Designed with ❤️ for rural education</span>
+          <span></span>
         </div>
       </div>
     </footer>
