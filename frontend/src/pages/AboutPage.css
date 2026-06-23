@@ -435,3 +435,47 @@
     font-size: 2rem;
   }
 }
+
+
+
+
+
+/* --- Dual Image Wrapper Styles --- */
+
+.directors-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between the two images */
+}
+
+/* Overriding the default 460px height so the dual images don't stretch the layout too far */
+.message-section__media .directors-wrapper img {
+  height: 240px; 
+}
+
+/* Tablet: When the layout breaks into 1 column, place the images side-by-side */
+@media (max-width: 992px) {
+  .directors-wrapper {
+    flex-direction: row; 
+    gap: 24px;
+  }
+  
+  .message-section__media .directors-wrapper img {
+    height: 320px; /* Slightly taller when they have the full width of the screen */
+  }
+}
+
+/* Mobile: Stack them vertically again for small screens */
+@media (max-width: 576px) {
+  .directors-wrapper {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .message-section__media .directors-wrapper img {
+    height: auto;
+    min-height: 260px;
+  }
+}

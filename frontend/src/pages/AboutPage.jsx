@@ -400,9 +400,14 @@ export default function AboutPage() {
       <section className="about-section" id="directors-message">
         <div className="about-container">
           <div className="message-section message-section--reverse">
-            <div className="message-section__media">
+            <div className="message-section__media message-section__media--dual">
               <div className="message-section__shape"></div>
-              <img src="/images/director.jpg" alt="Directors of Dr. SRJ Degree College" />
+              
+              {/* New wrapper for multiple images */}
+              <div className="directors-wrapper">
+                <img src="/images/director1.jpg" alt="Mr. P. Madhusudhan Reddy" />
+                <img src="/images/director2.jpg" alt="Mr. P. Mahesh Reddy" />
+              </div>
             </div>
 
             <div className="message-section__content">
