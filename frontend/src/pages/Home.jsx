@@ -7,8 +7,8 @@ import About from "../components/About";
 //import Management from "../components/Management";
 //import Admissions from "../components/Admissions";
 import News from "../components/News";
-import Gallery from "../components/Gallery";
-import Placements from "../components/Placements";
+// import Gallery from "../components/Gallery";
+// import Placements from "../components/Placements";
 import Contact from "../components/Contact";
 
 export default function Home() {
@@ -35,8 +35,8 @@ export default function Home() {
         <Management />
         <Admissions />
         <News />*/}
-        <Gallery />
-        <Placements />
+        {/* <Gallery />
+        <Placements /> */}
         <Contact />
       </main>
     </>

@@ -1,5 +1,5 @@
 /* ─── Placements ────────────────────────────────────────────── */
-.placements__stats {
+/* .placements__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -40,7 +40,6 @@
   font-weight: 500;
 }
 
-/* Companies */
 .placements__companies {
   background: var(--bg-section);
   border-radius: var(--radius-lg);
@@ -87,7 +86,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* Testimonials */
 .testimonials { }
 .testimonials__heading {
   font-size: 1.6rem;
@@ -160,7 +158,6 @@
   margin-top: 2px;
 }
 
-/* Dots */
 .testimonials__dots {
   display: flex;
   justify-content: center;
@@ -182,11 +179,10 @@
   border-radius: var(--radius-full);
 }
 
-/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .placements__stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
   .testimonial-card { padding: 28px 20px; }
   .testimonials__heading { font-size: 1.3rem; }
-}
+} */
